@@ -1,0 +1,111 @@
+import { getResponse } from './util';
+
+const RESPONSES = {
+  POSTS: {
+    200: getResponse('Lista de posts', 'Posts'),
+  },
+  POST: {
+    200: getResponse('Detalhes do post', 'Post'),
+  },
+};
+
+const PARAMETERS = {
+  ID: {
+    name: 'id',
+    in: 'path',
+    required: true,
+    description: 'id do post',
+  },
+};
+
+const tags = ['posts'];
+
+export const schema = {
+  Post: {
+    type: 'object',
+    properties: {
+      id: { type: 'string' },
+      timestamp: { type: 'integer' },
+      titulo: { type: 'string' },
+      corpo: { type: 'string' },
+      autor: { type: 'string' },
+      categoria: { type: 'string' },
+      nota: { type: 'integer' },
+      excluido: { type: 'boolean' },
+      numero: { type: 'integer' },
+    },
+  },
+  Posts: {
+    type: 'array',
+    items: {
+      $ref: '#/components/schemas/Post',
+    },
+  },
+  PostForm: {
+    type: 'object',
+    properties: {
+      titulo: { type: 'string' },
+      corpo: { type: 'string' },
+      autor: { type: 'string' },
+      categoria: { type: 'string' },
+    },
+    required: ['titulo', 'corpo', 'autor', 'categoria'],
+  },
+};
+
+export const paths = {
+  '/posts': {
+    get: {
+      tags,
+      description: 'Obtém a lista completa de posts',
+      responses: RESPONSES.POSTS,
+    },
+    post: {
+      tags,
+      description: 'Cadastra novo post',
+      requestBody: {
+        description: 'Dados do post (todos os campos são obrigatórios)',
+        required: true,
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/PostForm',
+            },
+          },
+        },
+      },
+      responses: RESPONSES.POST,
+    },
+  },
+  '/posts/{id}': {
+    get: {
+      tags,
+      description: 'Obtém post com o ID informado',
+      parameters: [PARAMETERS.ID],
+      responses: RESPONSES.POST,
+    },
+    put: {
+      tags,
+      description: 'Atualiza os dados de um post',
+      parameters: [PARAMETERS.ID],
+      requestBody: {
+        description: 'Dados do post (todos os dados são obrigatórios)',
+        required: true,
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/PostForm',
+            },
+          },
+        },
+      },
+      responses: RESPONSES.POST,
+    },
+    delete: {
+      tags,
+      description: 'Marca um post como excluído',
+      parameters: [PARAMETERS.ID],
+      responses: RESPONSES.POST,
+    },
+  },
+};

@@ -1,0 +1,29 @@
+{
+  "name": "forum-api-client",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Claudio Romero",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js",
+    "prebuild": "rimraf build/*",
+    "build": "babel -d ./build ./src",
+    "start": "babel-node src/server.js",
+    "start:production": "NODE_ENV=production node ./build/server.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "eslint": "^7.3.1",
+    "nodemon": "^2.0.4",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "swagger-ui-express": "^4.1.4",
+    "uuid": "^8.2.0"
+  }
+}
