@@ -57,6 +57,13 @@ export const schema = {
     },
     required: ['titulo', 'corpo', 'autor', 'categoria'],
   },
+  PostVoto: {
+    type: 'object',
+    properties: {
+      opcao: { type: 'string' },
+    },
+    required: ['opcao'],
+  },
 };
 
 export const paths = {
@@ -113,6 +120,25 @@ export const paths = {
       tags,
       description: 'Marca um post como excluído',
       parameters: [PARAMETERS.ID],
+      responses: RESPONSES.POST,
+    },
+  },
+  '/posts/{id}/votar': {
+    put: {
+      tags,
+      description: 'Incrementa ou decrementa o score de votos de um post',
+      parameters: [PARAMETERS.ID],
+      requestBody: {
+        description: '"positivo" ou "negativo"',
+        required: true,
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/PostVoto',
+            },
+          },
+        },
+      },
       responses: RESPONSES.POST,
     },
   },
