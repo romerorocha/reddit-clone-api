@@ -16,6 +16,12 @@ const PARAMETERS = {
     required: true,
     description: 'id do post',
   },
+  CATEGORIA: {
+    name: 'categoria',
+    in: 'query',
+    required: false,
+    description: 'filtro por categoria',
+  },
 };
 
 const tags = ['posts'];
@@ -57,7 +63,9 @@ export const paths = {
   '/posts': {
     get: {
       tags,
-      description: 'Obtém a lista completa de posts',
+      description:
+        'Obtém a lista de posts, completa ou com filtro por categoria.',
+      parameters: [PARAMETERS.CATEGORIA],
       responses: RESPONSES.POSTS,
     },
     post: {
