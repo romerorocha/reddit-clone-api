@@ -20,6 +20,7 @@ app.use(authHandler);
 
 app.use('/categorias', routes.categoria);
 app.use('/posts', routes.post);
+app.use('/comentarios', routes.comentario);
 
 app.use(logErrors);
 app.use(errorHandler);

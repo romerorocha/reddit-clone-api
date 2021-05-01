@@ -8,11 +8,11 @@ export const posts = {
     categoria: 'senhor-dos-aneis',
     nota: -10,
     excluido: false,
-    numeroComentarios: 2,
+    numeroComentarios: 1,
   },
   '021f115e-a8fc-11eb-bcbc-0242ac130002': {
     id: '021f115e-a8fc-11eb-bcbc-0242ac130002',
-    timestamp: 1619708549910,
+    timestamp: 1619796849227,
     titulo: "They're taking the Hobbits to Isengard!",
     corpo:
       "They're taking the Hobbits to Isengard-gard-gard-gard-gard-gard-gard-gard-gard-gard-gard-gard-gard-gard-gard-gard!",
@@ -20,7 +20,7 @@ export const posts = {
     categoria: 'senhor-dos-aneis',
     nota: 12,
     excluido: false,
-    numeroComentarios: 1,
+    numeroComentarios: 2,
   },
   'efa6a84c-a8f2-11eb-bcbc-0242ac130002': {
     id: 'efa6a84c-a8f2-11eb-bcbc-0242ac130002',

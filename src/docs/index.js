@@ -1,5 +1,6 @@
-import * as posts from './posts';
 import * as categorias from './categorias';
+import * as posts from './posts';
+import * as comentarios from './comentarios';
 
 const apiDocs = {
   openapi: '3.0.1',
@@ -15,10 +16,11 @@ const apiDocs = {
   },
   security: [{ bearerAuth: [] }],
   servers: [{ url: 'http://localhost:3001/', description: 'Servidor Local' }],
-  tags: [{ name: 'posts' }],
+  tags: [{ name: 'categorias' }, { name: 'posts' }, { name: 'comentarios' }],
   paths: {
     ...categorias.paths,
     ...posts.paths,
+    ...comentarios.paths,
   },
   components: {
     securitySchemes: {
@@ -27,6 +29,7 @@ const apiDocs = {
     schemas: {
       ...categorias.schema,
       ...posts.schema,
+      ...comentarios.schema,
       Error: {
         type: 'object',
         properties: {

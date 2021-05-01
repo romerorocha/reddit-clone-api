@@ -38,7 +38,7 @@ export const schema = {
       categoria: { type: 'string' },
       nota: { type: 'integer' },
       excluido: { type: 'boolean' },
-      numero: { type: 'integer' },
+      numeroComentarios: { type: 'integer' },
     },
   },
   Posts: {

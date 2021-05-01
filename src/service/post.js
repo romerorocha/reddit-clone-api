@@ -1,14 +1,12 @@
 import { v1 as uuidv1 } from 'uuid';
-import {
-  ERRO_POST_NAO_EXISTE,
-  ERRO_POST_VOTO_INVALIDO,
-} from '../config/messages';
+import { ERRO_VOTO_INVALIDO } from '../config/messages';
 import { posts } from '../db/posts';
 import { ErroValidacao } from '../validation/erros';
 import {
   validarCamposObrigatorios,
   validarExistenciaPost,
 } from '../validation/input';
+import { atualizarFilhosExclusaoPai } from './comentario';
 import { obterAtivos } from './util';
 
 export const listar = () => obterAtivos(posts);
@@ -62,7 +60,7 @@ export const votar = (id, opcao) => {
       post.nota--;
       break;
     default:
-      throw new ErroValidacao(ERRO_POST_VOTO_INVALIDO);
+      throw new ErroValidacao(ERRO_VOTO_INVALIDO);
   }
   return post;
 };
@@ -71,21 +69,9 @@ export const excluir = id => {
   validarCamposObrigatorios(id);
   validarExistenciaPost(id);
 
-  const post = posts[id];
-  if (!post || post.excluido) {
-    throw new Error(ERRO_POST_NAO_EXISTE);
-  }
-
+  atualizarFilhosExclusaoPai(id);
   posts[id].excluido = true;
   return posts[id];
-};
-
-export const excluirTodosPorCategoria = categoria => {
-  for (let post of posts) {
-    if (post.categoria === categoria) {
-      post.excluido = true;
-    }
-  }
 };
 
 export const atualizarContadorComentarios = (id, quantidade) => {
