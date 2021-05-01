@@ -1,9 +1,10 @@
-import { comentarios } from '../db/comentarios';
-import { posts } from '../db/posts';
-import { ErroCampoObrigatorio, ErroRegistroInexistente } from './erros';
+import { comentarios } from "../db/comentarios";
+import { posts } from "../db/posts";
+import { ErroCampoObrigatorio, ErroRegistroInexistente } from "./erros";
 
-export const validarExistenciaPost = id => validarExistenciaRegistro(id, posts);
-export const validarExistenciaComentario = id => {
+export const validarExistenciaPost = (id) =>
+  validarExistenciaRegistro(id, posts);
+export const validarExistenciaComentario = (id) => {
   return validarExistenciaRegistro(id, comentarios);
 };
 
@@ -13,7 +14,7 @@ export const validarExistenciaRegistro = (id, objeto) => {
   }
 };
 
-export const validarCamposObrigatorios = campos => {
+export const validarCamposObrigatorios = (...campos) => {
   const nomes = [];
   for (const key in campos) {
     if (!campos[key]) {

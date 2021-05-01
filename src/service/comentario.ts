@@ -1,19 +1,19 @@
-import { v1 as uuidv1 } from 'uuid';
-import { ERRO_VOTO_INVALIDO } from '../config/messages';
-import { comentarios } from '../db/comentarios';
-import { ErroValidacao } from '../validation/erros';
+import { v1 as uuidv1 } from "uuid";
+import { ERRO_VOTO_INVALIDO } from "../config/messages";
+import { comentarios } from "../db/comentarios";
+import { ErroValidacao } from "../validation/erros";
 import {
   validarCamposObrigatorios,
   validarExistenciaComentario,
   validarExistenciaPost,
-} from '../validation/input';
-import { atualizarContadorComentarios } from './post';
+} from "../validation/input";
+import { atualizarContadorComentarios } from "./post";
 
-export const listar = idPai => {
+export const listar = (idPai) => {
   validarCamposObrigatorios(idPai);
 
   return Object.values(comentarios).filter(
-    c => c.idPai === idPai && !c.excluido && !c.paiExcluido
+    (c) => c.idPai === idPai && !c.excluido && !c.paiExcluido
   );
 };
 
@@ -51,10 +51,10 @@ export const votar = (id, opcao) => {
 
   const comentario = comentarios[id];
   switch (opcao) {
-    case 'positivo':
+    case "positivo":
       comentario.nota++;
       break;
-    case 'negativo':
+    case "negativo":
       comentario.nota--;
       break;
     default:
@@ -63,7 +63,7 @@ export const votar = (id, opcao) => {
   return comentario;
 };
 
-export const excluir = id => {
+export const excluir = (id) => {
   validarCamposObrigatorios(id);
   validarExistenciaComentario(id);
 
@@ -73,7 +73,7 @@ export const excluir = id => {
   return comentario;
 };
 
-export const atualizarFilhosExclusaoPai = idPai => {
+export const atualizarFilhosExclusaoPai = (idPai) => {
   validarCamposObrigatorios(idPai);
   for (const c of Object.values(comentarios)) {
     if (c.idPai === idPai) {

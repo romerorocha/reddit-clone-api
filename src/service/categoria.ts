@@ -1,12 +1,12 @@
 import {
   ERRO_CATEGORIA_JA_EXISTE,
   ERRO_CATEGORIA_POSSUI_POSTS,
-} from '../config/messages';
-import { categorias } from '../db/categorias';
-import { ErroRegistroInexistente, ErroValidacao } from '../validation/erros';
-import { validarCamposObrigatorios } from '../validation/input';
-import * as postService from './post';
-import { obterAtivos } from './util';
+} from "../config/messages";
+import { categorias } from "../db/categorias";
+import { ErroRegistroInexistente, ErroValidacao } from "../validation/erros";
+import { validarCamposObrigatorios } from "../validation/input";
+import * as postService from "./post";
+import { obterAtivos } from "./util";
 
 export const listar = () => obterAtivos(categorias);
 
@@ -19,7 +19,7 @@ export const criar = (nome, path) => {
   return categorias[path];
 };
 
-export const excluir = path => {
+export const excluir = (path) => {
   validarCamposObrigatorios(path);
   if (!categorias[path] || categorias[path].excluido) {
     throw new ErroRegistroInexistente(path);

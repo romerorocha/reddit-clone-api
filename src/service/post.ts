@@ -1,21 +1,21 @@
-import { v1 as uuidv1 } from 'uuid';
-import { ERRO_VOTO_INVALIDO } from '../config/messages';
-import { posts } from '../db/posts';
-import { ErroValidacao } from '../validation/erros';
+import { v1 as uuidv1 } from "uuid";
+import { ERRO_VOTO_INVALIDO } from "../config/messages";
+import { posts } from "../db/posts";
+import { ErroValidacao } from "../validation/erros";
 import {
   validarCamposObrigatorios,
   validarExistenciaPost,
-} from '../validation/input';
-import { atualizarFilhosExclusaoPai } from './comentario';
-import { obterAtivos } from './util';
+} from "../validation/input";
+import { atualizarFilhosExclusaoPai } from "./comentario";
+import { obterAtivos } from "./util";
 
 export const listar = () => obterAtivos(posts);
 
-export const listarPorCategoria = categoria => {
-  return listar().filter(p => p.categoria === categoria);
+export const listarPorCategoria = (categoria) => {
+  return listar().filter((p) => p.categoria === categoria);
 };
 
-export const obterPorId = id => {
+export const obterPorId = (id) => {
   validarExistenciaPost(id);
   return posts[id];
 };
@@ -53,10 +53,10 @@ export const votar = (id, opcao) => {
 
   const post = posts[id];
   switch (opcao) {
-    case 'positivo':
+    case "positivo":
       post.nota++;
       break;
-    case 'negativo':
+    case "negativo":
       post.nota--;
       break;
     default:
@@ -65,7 +65,7 @@ export const votar = (id, opcao) => {
   return post;
 };
 
-export const excluir = id => {
+export const excluir = (id) => {
   validarCamposObrigatorios(id);
   validarExistenciaPost(id);
 

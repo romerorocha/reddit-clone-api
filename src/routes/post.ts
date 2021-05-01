@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import * as postService from '../service/post';
+import { Router } from "express";
+import * as postService from "../service/post";
 
-const router = new Router();
+const router = Router();
 
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   const categoria = req.query.categoria;
   if (categoria) {
     res.send(postService.listarPorCategoria(categoria));
@@ -12,27 +12,27 @@ router.get('/', (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
   const post = postService.obterPorId(req.params?.id);
   res.send(post);
 });
 
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   const post = postService.criar(req.body);
   res.send(post);
 });
 
-router.put('/:id', (req, res) => {
+router.put("/:id", (req, res) => {
   const post = postService.atualizar(req.params?.id, req.body);
   res.send(post);
 });
 
-router.put('/:id/votar', (req, res) => {
+router.put("/:id/votar", (req, res) => {
   const post = postService.votar(req.params?.id, req.body?.opcao);
   res.send(post);
 });
 
-router.delete('/:id', (req, res) => {
+router.delete("/:id", (req, res) => {
   const post = postService.excluir(req.params?.id);
   res.send(post);
 });
