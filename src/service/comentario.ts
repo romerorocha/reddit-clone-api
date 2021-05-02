@@ -73,11 +73,12 @@ export const excluir = (id) => {
   return comentario;
 };
 
-export const atualizarFilhosExclusaoPai = (idPai) => {
+export const excluirListaComentarios = (idPai: string) => {
   validarCamposObrigatorios(idPai);
-  for (const c of Object.values(comentarios)) {
-    if (c.idPai === idPai) {
-      c.paiExcluido = true;
+
+  for (const id in Object.values(comentarios)) {
+    if (comentarios[id].idPai === idPai) {
+      delete comentarios[id];
     }
   }
 };

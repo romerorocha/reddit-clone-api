@@ -36,8 +36,6 @@ export const schema = {
       corpo: { type: "string" },
       autor: { type: "string" },
       nota: { type: "integer" },
-      excluido: { type: "boolean" },
-      paiExcluido: { type: "boolean" },
     },
   },
   Comentarios: {

@@ -37,7 +37,6 @@ export const schema = {
       autor: { type: "string" },
       categoria: { type: "string" },
       nota: { type: "integer" },
-      excluido: { type: "boolean" },
       numeroComentarios: { type: "integer" },
     },
   },

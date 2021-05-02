@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { Categoria } from "../model/categoria";
 import * as categoriaService from "../service/categoria";
 
 const router = Router();
@@ -8,7 +9,8 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const post = categoriaService.criar(req.body);
+  const categoria: Categoria = req.body;
+  const post = categoriaService.criar(categoria);
   res.send(post);
 });
 

@@ -1,4 +1,6 @@
-export const posts = {
+import { Posts } from "../model/post";
+
+export const posts: Posts = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
     id: "e49bc914-a8f2-11eb-bcbc-0242ac130002",
     timestamp: 1619704748161,

@@ -4,9 +4,10 @@ import * as postService from "../service/post";
 const router = Router();
 
 router.get("/", (req, res) => {
-  const categoria = req.query.categoria;
-  if (categoria) {
-    res.send(postService.listarPorCategoria(categoria));
+  const path: any = req.query.categoria;
+
+  if (path) {
+    res.send(postService.listarPorCategoria(path));
   } else {
     res.send(postService.listar());
   }

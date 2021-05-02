@@ -26,7 +26,6 @@ export const schema = {
     properties: {
       path: { type: "string" },
       nome: { type: "string" },
-      excluido: { type: "boolean" },
     },
   },
   Categorias: {

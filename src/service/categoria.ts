@@ -3,25 +3,29 @@ import {
   ERRO_CATEGORIA_POSSUI_POSTS,
 } from "../config/messages";
 import { categorias } from "../db/categorias";
+import { Categoria, Categorias } from "../model/categoria";
 import { ErroRegistroInexistente, ErroValidacao } from "../validation/erros";
 import { validarCamposObrigatorios } from "../validation/input";
 import * as postService from "./post";
-import { obterAtivos } from "./util";
 
-export const listar = () => obterAtivos(categorias);
+export const listar = (): Categoria[] => Object.values(categorias);
 
-export const criar = (nome, path) => {
+export const criar = (categoria: Categoria): Categoria => {
+  const { path, nome } = categoria;
+
   validarCamposObrigatorios(nome, path);
   if (categorias[path]) {
     throw new ErroValidacao(ERRO_CATEGORIA_JA_EXISTE);
   }
-  categorias[path] = { nome, path };
+
+  categorias[path] = categoria;
   return categorias[path];
 };
 
-export const excluir = (path) => {
+export const excluir = (path: string): string => {
   validarCamposObrigatorios(path);
-  if (!categorias[path] || categorias[path].excluido) {
+
+  if (!categorias[path]) {
     throw new ErroRegistroInexistente(path);
   }
 
@@ -30,6 +34,7 @@ export const excluir = (path) => {
     throw new ErroValidacao(ERRO_CATEGORIA_POSSUI_POSTS);
   }
 
-  categorias[path].excluido = true;
-  return categorias[path];
+  delete categorias[path];
+
+  return path;
 };
