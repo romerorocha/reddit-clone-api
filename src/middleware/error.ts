@@ -19,7 +19,8 @@ export const errorHandler = (
   __: NextFunction
 ) => {
   if (err.status) {
-    res.status(err.status).send(err);
+    const { name, message } = err;
+    res.status(err.status).send({ name, message });
   } else {
     res.status(500).send({ status: 500, mensagem: "Internal Server Error" });
   }

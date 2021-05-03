@@ -14,22 +14,20 @@ export class HttpError extends Error {
 export class ErroAutorizacao extends HttpError {
   constructor() {
     const mensagem =
-      "YOU SHALL NOT PASS! (at least, not without an authorization header)";
-
-    super(403, mensagem, "ErroAutorizacao");
+      "YOU SHALL NOT PASS! (não sem a senha, pelo menos -> LEIA O README!)";
+    super(403, mensagem, "Erro de Autorização");
   }
 }
 
 export class ErroValidacao extends HttpError {
   constructor(mensagem: string) {
-    super(400, mensagem, "ErroValidacao");
+    super(400, mensagem, "Erro de Validação");
   }
 }
 
 export class ErroRegistroInexistente extends ErroValidacao {
   constructor(id: string) {
     super(`Registro '${id}' não existe.`);
-    this.name = "ErroRegistroInexistente";
   }
 }
 
@@ -43,6 +41,5 @@ export class ErroCampoObrigatorio extends ErroValidacao {
     }
 
     super(mensagem);
-    this.name = "ErroCampoObrigatorio";
   }
 }

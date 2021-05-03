@@ -5,6 +5,7 @@
   "author": "Claudio Romero",
   "main": "build/src/index.js",
   "scripts": {
+    "clean": "rimraf build/* && rimraf api-docs/*",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "prebuild": "rimraf build/* && rimraf api-docs/*",
     "build": "tsoa spec-and-routes && tsc",
