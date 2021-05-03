@@ -3,28 +3,31 @@ import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
 import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
 import { validarCamposObrigatorios } from "../common/validacao.util";
 import { OpcaoVoto, Voto } from "../voto/voto";
-import { Post } from "./post";
+import { IPost } from "./post";
 import { PostRepository, posts } from "./post.repository";
 
-export type PostParams = Pick<Post, "titulo" | "corpo" | "autor" | "categoria">;
+export type PostParams = Pick<
+  IPost,
+  "titulo" | "corpo" | "autor" | "categoria"
+>;
 
 export class PostService {
-  public listar(): Post[] {
+  public listar(): IPost[] {
     return new PostRepository().listar();
   }
 
-  public listarPorCategoria(pathCategoria: string): Post[] {
+  public listarPorCategoria(pathCategoria: string): IPost[] {
     return new PostRepository()
       .listar()
       .filter((p) => p.categoria === pathCategoria);
   }
 
-  public obterPorId = (id: string): Post => {
+  public obterPorId = (id: string): IPost => {
     this.validarExistenciaPost(id);
     return new PostRepository().obterPorId(id);
   };
 
-  public criar = (post: PostParams): Post => {
+  public criar = (post: PostParams): IPost => {
     validarCamposObrigatorios(post);
 
     const novoPost = {
@@ -37,7 +40,7 @@ export class PostService {
     return new PostRepository().salvar(novoPost);
   };
 
-  public atualizar = (id: string, post: PostParams): Post => {
+  public atualizar = (id: string, post: PostParams): IPost => {
     validarCamposObrigatorios({ id, ...post });
 
     const repository = new PostRepository();
@@ -50,7 +53,7 @@ export class PostService {
     return repository.salvar({ ...postExistente, ...post });
   };
 
-  public votar = (id: string, voto: Voto): Post => {
+  public votar = (id: string, voto: Voto): IPost => {
     validarCamposObrigatorios(id);
 
     const repository = new PostRepository();

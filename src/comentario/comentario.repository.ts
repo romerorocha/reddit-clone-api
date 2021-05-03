@@ -1,7 +1,7 @@
-import { Comentario, Comentarios } from "./comentario";
+import { IComentario, IComentarios } from "./comentario";
 import { v1 as uuidv1 } from "uuid";
 
-export const comentarios: Comentarios = {
+export const comentarios: IComentarios = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
     "b54ef100-a9c8-11eb-bcbc-0242ac130002": {
       id: "b54ef100-a9c8-11eb-bcbc-0242ac130002",
@@ -47,7 +47,7 @@ export class ComentarioRepository {
     return comentario;
   }
 
-  public listar(idPai: string): Comentario[] {
+  public listar(idPai: string): IComentario[] {
     if (!idPai || !comentarios[idPai]) {
       return [];
     }
@@ -55,7 +55,7 @@ export class ComentarioRepository {
     return Object.values(comentarios[idPai]);
   }
 
-  public salvar = (comentario: Comentario) => {
+  public salvar = (comentario: IComentario) => {
     let { id, idPai } = comentario;
 
     id = id ?? uuidv1();
@@ -68,7 +68,7 @@ export class ComentarioRepository {
     const comentario = this.obter(id);
 
     if (comentario) {
-      delete comentarios[id];
+      delete comentarios[comentario.idPai][id];
       return id;
     }
 

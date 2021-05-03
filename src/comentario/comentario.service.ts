@@ -3,13 +3,13 @@ import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
 import { validarCamposObrigatorios } from "../common/validacao.util";
 import { PostService } from "../post/post.service";
 import { OpcaoVoto, Voto } from "../voto/voto";
-import { Comentario } from "./comentario";
+import { IComentario } from "./comentario";
 import { ComentarioRepository } from "./comentario.repository";
 
-export type ComentarioParams = Pick<Comentario, "autor" | "corpo">;
+export type ComentarioParams = Pick<IComentario, "autor" | "corpo">;
 
 export class ComentarioService {
-  public listar(idPai: string): Comentario[] {
+  public listar(idPai: string): IComentario[] {
     validarCamposObrigatorios(idPai);
     return new ComentarioRepository().listar(idPai);
   }

@@ -1,7 +1,7 @@
 import { v1 as uuidv1 } from "uuid";
-import { Post, Posts } from "./post";
+import { IPost, IPosts } from "./post";
 
-export const posts: Posts = {
+export const posts: IPosts = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
     id: "e49bc914-a8f2-11eb-bcbc-0242ac130002",
     timestamp: 1619704748161,
@@ -36,7 +36,7 @@ export const posts: Posts = {
 };
 
 export class PostRepository {
-  public listar(): Post[] {
+  public listar(): IPost[] {
     return Object.values(posts);
   }
 
@@ -50,7 +50,7 @@ export class PostRepository {
     return post;
   };
 
-  public salvar = (post: Post): Post => {
+  public salvar = (post: IPost): IPost => {
     const id = post.id ?? uuidv1();
     posts[id] = { ...post, id };
     return posts[id];

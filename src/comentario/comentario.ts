@@ -1,4 +1,4 @@
-export interface Comentario {
+export interface IComentario {
   id?: string;
   idPai: string;
   timestamp: number;
@@ -7,10 +7,10 @@ export interface Comentario {
   nota: number;
 }
 
-export interface ComentarioIndexado {
-  [key: string]: Comentario;
+export interface IComentarioIndexado {
+  [key: string]: IComentario;
 }
 
-export interface Comentarios {
-  [key: string]: ComentarioIndexado;
+export interface IComentarios {
+  [key: string]: IComentarioIndexado;
 }

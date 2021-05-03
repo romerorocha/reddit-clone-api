@@ -5,15 +5,15 @@ import {
 } from "../common/mensagens";
 import { validarCamposObrigatorios } from "../common/validacao.util";
 import { PostService } from "../post/post.service";
-import { Categoria } from "./categoria";
+import { ICategoria } from "./categoria";
 import { CategoriaRepository } from "./categoria.repository";
 
 export class CategoriaService {
-  public listar(): Categoria[] {
+  public listar(): ICategoria[] {
     return new CategoriaRepository().listar();
   }
 
-  public criar(categoria: Categoria): Categoria {
+  public criar(categoria: ICategoria): ICategoria {
     const { path, nome } = categoria;
     validarCamposObrigatorios(nome, path);
 

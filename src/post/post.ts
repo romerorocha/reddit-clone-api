@@ -1,4 +1,4 @@
-export interface Post {
+export interface IPost {
   id?: string;
   titulo: string;
   corpo: string;
@@ -9,6 +9,6 @@ export interface Post {
   numeroComentarios: number;
 }
 
-export interface Posts {
-  [key: string]: Post;
+export interface IPosts {
+  [key: string]: IPost;
 }

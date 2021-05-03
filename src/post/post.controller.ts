@@ -4,7 +4,7 @@ import {
   Delete,
   Get,
   Path,
-  Post as PostRest,
+  Post,
   Put,
   Query,
   Route,
@@ -13,7 +13,7 @@ import {
   Tags,
 } from "tsoa";
 import { Voto } from "../voto/voto";
-import { Post } from "./post";
+import { IPost } from "./post";
 import { PostParams, PostService } from "./post.service";
 
 @Route("posts")
@@ -21,22 +21,22 @@ import { PostParams, PostService } from "./post.service";
 @Security("bearerAuth")
 export class PostController extends Controller {
   @Get()
-  public async listar(@Query() path?: string): Promise<Post[]> {
-    if (!path) {
+  public async listar(@Query() categoria?: string): Promise<IPost[]> {
+    if (!categoria) {
       return new PostService().listar();
     }
-    return new PostService().listarPorCategoria(path);
+    return new PostService().listarPorCategoria(categoria);
   }
 
   @SuccessResponse("201", "Created")
-  @PostRest()
-  public async criar(@Body() requestBody: PostParams): Promise<Post> {
+  @Post()
+  public async criar(@Body() requestBody: PostParams): Promise<IPost> {
     this.setStatus(201);
     return new PostService().criar(requestBody);
   }
 
   @Get("{idPost}")
-  public async obterPorId(@Path() idPost: string): Promise<Post> {
+  public async obterPorId(@Path() idPost: string): Promise<IPost> {
     return new PostService().obterPorId(idPost);
   }
 
@@ -45,7 +45,7 @@ export class PostController extends Controller {
   public async atualizar(
     @Path() idPost: string,
     @Body() requestBody: PostParams
-  ): Promise<Post> {
+  ): Promise<IPost> {
     this.setStatus(200);
     return new PostService().atualizar(idPost, requestBody);
   }
@@ -55,7 +55,7 @@ export class PostController extends Controller {
   public async votar(
     @Path() idPost: string,
     @Body() requestBody: Voto
-  ): Promise<Post> {
+  ): Promise<IPost> {
     this.setStatus(200);
     return new PostService().votar(idPost, requestBody);
   }

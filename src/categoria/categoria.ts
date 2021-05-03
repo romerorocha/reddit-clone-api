@@ -1,8 +1,8 @@
-export interface Categoria {
+export interface ICategoria {
   path: string;
   nome: string;
 }
 
-export interface Categorias {
-  [key: string]: Categoria;
+export interface ICategorias {
+  [key: string]: ICategoria;
 }

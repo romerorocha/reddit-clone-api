@@ -10,7 +10,7 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
-import { Categoria } from "./categoria";
+import { ICategoria } from "./categoria";
 import { CategoriaService } from "./categoria.service";
 
 @Route("categorias")
@@ -18,13 +18,13 @@ import { CategoriaService } from "./categoria.service";
 @Security("bearerAuth")
 export class CategoriaController extends Controller {
   @Get()
-  public async listar(): Promise<Categoria[]> {
+  public async listar(): Promise<ICategoria[]> {
     return new CategoriaService().listar();
   }
 
   @SuccessResponse("201", "Created")
   @Post()
-  public async criar(@Body() requestBody: Categoria): Promise<Categoria> {
+  public async criar(@Body() requestBody: ICategoria): Promise<ICategoria> {
     this.setStatus(201);
     return new CategoriaService().criar(requestBody);
   }
