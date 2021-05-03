@@ -1,8 +1,6 @@
-import { HOST, PORT } from "./constants";
-
 export const WELCOME_TO_MORIA = `
 The Doors of Durin, Lord of Moria. 
-Speak "Authorization Header" and enter. --> ${HOST}:${PORT}
+Speak "Authorization Header" and enter. --> ${process.env.SERVER_URL}:${process.env.PORT}
 `;
 
 export const ERRO_CATEGORIA_JA_EXISTE =

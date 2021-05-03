@@ -12,7 +12,12 @@ export const logErrors = (
 };
 
 // eslint-disable-next-line no-unused-vars
-export const errorHandler = (err: HttpError, _: Request, res: Response) => {
+export const errorHandler = (
+  err: HttpError,
+  _: Request,
+  res: Response,
+  __: NextFunction
+) => {
   if (err.status) {
     res.status(err.status).send(err);
   } else {

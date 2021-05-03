@@ -1,5 +1,8 @@
 # Build output
-build/
+build/**
+
+# Generated Docs
+api-docs/
 
 # Logs
 logs

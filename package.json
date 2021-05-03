@@ -6,9 +6,10 @@
   "main": "build/src/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
+    "prebuild": "rimraf build/*",
     "build": "tsoa spec-and-routes && tsc",
     "start": "node build/src/index.js",
-    "start:production": "NODE_ENV=production node ./build/index.js"
+    "start:production": "NODE_ENV=production node build/src/index.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",

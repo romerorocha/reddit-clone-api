@@ -8,13 +8,15 @@ import {
   Route,
   Security,
   SuccessResponse,
+  Tags,
 } from "tsoa";
 import { Categoria } from "./categoria";
 import { CategoriaService } from "./categoriaService";
 
 @Route("categorias")
+@Tags("Categorias")
+@Security("bearerAuth")
 export class CategoriaController extends Controller {
-  @Security("bearerAuth")
   @Get()
   public async listar(): Promise<Categoria[]> {
     return new CategoriaService().listar();

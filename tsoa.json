@@ -3,7 +3,7 @@
   "noImplicitAdditionalProperties": "throw-on-extras",
   "controllerPathGlobs": ["src/**/*Controller.ts"],
   "spec": {
-    "outputDirectory": "docs",
+    "outputDirectory": "build/api-docs",
     "specVersion": 3,
     "securityDefinitions": {
       "bearerAuth": { "type": "http", "scheme": "bearer" }

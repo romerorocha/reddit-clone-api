@@ -8,13 +8,17 @@ import {
   Put,
   Query,
   Route,
+  Security,
   SuccessResponse,
+  Tags,
 } from "tsoa";
 import { Voto } from "../common/voto";
 import { Post } from "./post";
 import { PostParams, PostService } from "./postService";
 
 @Route("posts")
+@Tags("Posts")
+@Security("bearerAuth")
 export class PostController extends Controller {
   @Get()
   public async listar(@Query() path?: string): Promise<Post[]> {

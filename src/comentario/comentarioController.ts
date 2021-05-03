@@ -7,13 +7,17 @@ import {
   Post,
   Put,
   Route,
+  Security,
   SuccessResponse,
+  Tags,
 } from "tsoa";
 import { Voto } from "../common/voto";
 import { Comentario } from "./comentario";
 import { ComentarioParams, ComentarioService } from "./comentarioService";
 
 @Route("comentarios")
+@Tags("Comentários")
+@Security("bearerAuth")
 export class ComentarioController extends Controller {
   @Get("{idPai}")
   public async listar(@Path() idPai: string): Promise<Comentario[]> {
