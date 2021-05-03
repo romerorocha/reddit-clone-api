@@ -9,9 +9,9 @@ Para instalar as dependências do projeto
 yarn install
 ```
 
-Para executar a aplicação
-```sh
-yarn start
+Para compilar e executar a aplicação
+```
+yarn build && yarn start
 ```
 
 Para executar a aplicação no modo "desenvolvedor"
@@ -24,15 +24,17 @@ Para executar a aplicação em ambiente produtivo:
 yarn build && yarn start:production
 ```
 
-O servidor é executado na porta `3001`, se disponível.
+O servidor é executado na porta `5000`, se disponível.
 
 ## Uso
 
 ### Documentação
-Documentação da API disponível em `http://localhost:3001/api-docs`.
+Documentação da API disponível em `http://localhost:5000/api-docs`.
 
 ### Autenticação
-Necessário fornecer um *Header* `Authorization`, contendo um token (qualquer valor tipo string), apenas para simular uma autenticação real.
+> "Fale amigo, e entre!"
+
+Necessário fornecer um *Header* `Authorization`, contendo a senha `mellon`, apenas para simular uma autenticação real.
 ```
-Authorization: Bearer <QUALQUER_VALOR>
+Authorization: mellon
 ```
