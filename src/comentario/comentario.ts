@@ -1,5 +1,5 @@
 export interface Comentario {
-  id: string;
+  id?: string;
   idPai: string;
   timestamp: number;
   corpo: string;
@@ -7,6 +7,10 @@ export interface Comentario {
   nota: number;
 }
 
-export interface Comentarios {
+export interface ComentarioIndexado {
   [key: string]: Comentario;
+}
+
+export interface Comentarios {
+  [key: string]: ComentarioIndexado;
 }

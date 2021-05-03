@@ -1,84 +1,100 @@
-import { ComentarioService } from "../comentario/comentario.service";
-import { v1 as uuidv1 } from "uuid";
-import { OpcaoVoto, Voto } from "../voto/voto";
-import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
-import { posts } from "./posts.db";
+import { ComentarioRepository } from "../comentario/comentario.repository";
 import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
+import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
 import { validarCamposObrigatorios } from "../common/validacao.util";
+import { OpcaoVoto, Voto } from "../voto/voto";
 import { Post } from "./post";
+import { PostRepository, posts } from "./post.repository";
 
 export type PostParams = Pick<Post, "titulo" | "corpo" | "autor" | "categoria">;
 
 export class PostService {
   public listar(): Post[] {
-    return Object.values(posts);
+    return new PostRepository().listar();
   }
 
   public listarPorCategoria(pathCategoria: string): Post[] {
-    return this.listar().filter((p) => p.categoria === pathCategoria);
+    return new PostRepository()
+      .listar()
+      .filter((p) => p.categoria === pathCategoria);
   }
 
   public obterPorId = (id: string): Post => {
     this.validarExistenciaPost(id);
-    return posts[id];
+    return new PostRepository().obterPorId(id);
   };
 
   public criar = (post: PostParams): Post => {
     validarCamposObrigatorios(post);
 
-    const id = uuidv1();
-    posts[id] = {
-      id,
-      timestamp: Date.now(),
+    const novoPost = {
       ...post,
+      timestamp: Date.now(),
       nota: 0,
       numeroComentarios: 0,
     };
 
-    return posts[id];
+    return new PostRepository().salvar(novoPost);
   };
 
   public atualizar = (id: string, post: PostParams): Post => {
     validarCamposObrigatorios({ id, ...post });
-    this.validarExistenciaPost(id);
 
-    posts[id] = { ...posts[id], ...post };
-    return posts[id];
+    const repository = new PostRepository();
+
+    const postExistente = repository.obterPorId(id);
+    if (!postExistente || !postExistente.id) {
+      throw new ErroRegistroInexistente(id);
+    }
+
+    return repository.salvar({ ...postExistente, ...post });
   };
 
   public votar = (id: string, voto: Voto): Post => {
     validarCamposObrigatorios(id);
-    this.validarExistenciaPost(id);
 
-    const post = posts[id];
+    const repository = new PostRepository();
+
+    const postExistente = repository.obterPorId(id);
+    if (!postExistente || !postExistente.id) {
+      throw new ErroRegistroInexistente(id);
+    }
+
+    let nota;
     switch (voto.opcao) {
       case OpcaoVoto.Positivo:
-        post.nota++;
+        nota = postExistente.nota + 1;
         break;
       case OpcaoVoto.Negativo:
-        post.nota--;
+        nota = postExistente.nota - 1;
         break;
       default:
         throw new ErroValidacao(ERRO_VOTO_INVALIDO);
     }
 
-    return post;
+    return repository.salvar({ ...postExistente, nota });
   };
 
   public excluir = (id: string): string => {
     validarCamposObrigatorios(id);
     this.validarExistenciaPost(id);
 
-    new ComentarioService().excluirListaComentarios(id);
-    delete posts[id];
+    new ComentarioRepository().excluirPorPai(id);
+    return new PostRepository().excluir(id);
 
     return id;
   };
 
   public atualizarContadorComentarios = (id: string, incremento: number) => {
-    if (posts[id]) {
-      const atual = posts[id].numeroComentarios || 0;
-      posts[id].numeroComentarios = atual + incremento;
+    const repository = new PostRepository();
+
+    const postExistente = repository.obterPorId(id);
+
+    if (postExistente && postExistente.id) {
+      repository.salvar({
+        ...postExistente,
+        numeroComentarios: postExistente.numeroComentarios + incremento,
+      });
     }
   };
 

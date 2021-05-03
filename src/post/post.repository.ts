@@ -1,4 +1,5 @@
-import { Posts } from "./post";
+import { v1 as uuidv1 } from "uuid";
+import { Post, Posts } from "./post";
 
 export const posts: Posts = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
@@ -33,3 +34,34 @@ export const posts: Posts = {
     numeroComentarios: 0,
   },
 };
+
+export class PostRepository {
+  public listar(): Post[] {
+    return Object.values(posts);
+  }
+
+  public obterPorId = (id: string): any => {
+    let post;
+
+    if (id) {
+      post = posts[id];
+    }
+
+    return post;
+  };
+
+  public salvar = (post: Post): Post => {
+    const id = post.id ?? uuidv1();
+    posts[id] = { ...post, id };
+    return posts[id];
+  };
+
+  public excluir = (id: string): string => {
+    if (!id) {
+      return "";
+    }
+
+    delete posts[id];
+    return id;
+  };
+}
