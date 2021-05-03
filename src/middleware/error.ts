@@ -3,8 +3,8 @@ import { HttpError } from "../common/erros";
 
 export const logErrors = (
   err: HttpError,
-  _: Request,
-  __: Response,
+  _req: Request,
+  _res: Response,
   next: NextFunction
 ) => {
   console.error(err.stack);
@@ -14,11 +14,11 @@ export const logErrors = (
 // eslint-disable-next-line no-unused-vars
 export const errorHandler = (
   err: HttpError,
-  _: Request,
+  _req: Request,
   res: Response,
-  __: NextFunction
+  _next: NextFunction
 ) => {
-  if (err.status) {
+  if (err.status && err.status !== 500) {
     const { name, message } = err;
     res.status(err.status).send({ name, message });
   } else {

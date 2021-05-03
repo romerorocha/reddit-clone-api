@@ -13,8 +13,7 @@ export class HttpError extends Error {
 
 export class ErroAutorizacao extends HttpError {
   constructor() {
-    const mensagem =
-      "YOU SHALL NOT PASS! (não sem a senha, pelo menos -> LEIA O README!)";
+    const mensagem = "YOU SHALL NOT PASS! (não sem a senha -> LEIA O README!)";
     super(403, mensagem, "Erro de Autorização");
   }
 }
