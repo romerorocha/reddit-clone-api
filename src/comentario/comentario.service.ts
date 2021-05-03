@@ -1,13 +1,13 @@
-import { OpcaoVoto, Voto } from "../common/voto";
+import { OpcaoVoto, Voto } from "../voto/voto";
 import { v1 as uuidv1 } from "uuid";
-import { ERRO_VOTO_INVALIDO } from "../common/messages";
-import { comentarios } from "./comentariosDB";
-import { PostService } from "../post/postService";
+import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
+import { comentarios } from "./comentarios.db";
+import { PostService } from "../post/post.service";
 import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
 import {
   validarCamposObrigatorios,
   validarExistenciaRegistro,
-} from "../common/validation";
+} from "../common/validacao.util";
 import { Comentario } from "./comentario";
 
 export type ComentarioParams = Pick<Comentario, "autor" | "corpo">;

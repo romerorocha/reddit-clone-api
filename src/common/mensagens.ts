@@ -5,6 +5,7 @@ Speak "Authorization Header" and enter. --> ${process.env.SERVER_URL}:${process.
 
 export const ERRO_CATEGORIA_JA_EXISTE =
   "Já existe uma categoria com o 'path' informado.";
+
 export const ERRO_CATEGORIA_POSSUI_POSTS =
   "A categoria possui posts que a refereciam, não é possível removê-la.";
 

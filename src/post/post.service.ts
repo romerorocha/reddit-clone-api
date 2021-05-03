@@ -1,10 +1,10 @@
-import { ComentarioService } from "../comentario/comentarioService";
+import { ComentarioService } from "../comentario/comentario.service";
 import { v1 as uuidv1 } from "uuid";
-import { OpcaoVoto, Voto } from "../common/voto";
-import { ERRO_VOTO_INVALIDO } from "../common/messages";
-import { posts } from "./postsDB";
+import { OpcaoVoto, Voto } from "../voto/voto";
+import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
+import { posts } from "./posts.db";
 import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
-import { validarCamposObrigatorios } from "../common/validation";
+import { validarCamposObrigatorios } from "../common/validacao.util";
 import { Post } from "./post";
 
 export type PostParams = Pick<Post, "titulo" | "corpo" | "autor" | "categoria">;

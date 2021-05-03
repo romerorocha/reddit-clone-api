@@ -1,10 +1,11 @@
 import cors from "cors";
 import "dotenv/config";
-import express, { Request as ExRequest, Response as ExResponse } from "express";
+import express from "express";
 import swaggerUi from "swagger-ui-express";
 import { RegisterRoutes } from "../api-docs/routes";
-import { WELCOME_TO_MORIA } from "./common/messages";
-import { errorHandler, logErrors } from "./middleware/error";
+import { WELCOME_TO_MORIA } from "./common/mensagens";
+import { docsHandler } from "./middleware/docs";
+import { errorHandler, logErrors } from "./middleware/erros";
 
 const app = express();
 
@@ -12,15 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  async (_req: ExRequest, res: ExResponse) => {
-    return res.send(
-      swaggerUi.generateHTML(await import("../api-docs/swagger.json"))
-    );
-  }
-);
+app.use("/api-docs", swaggerUi.serve, docsHandler);
 
 RegisterRoutes(app);
 

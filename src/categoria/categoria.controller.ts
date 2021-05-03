@@ -11,7 +11,7 @@ import {
   Tags,
 } from "tsoa";
 import { Categoria } from "./categoria";
-import { CategoriaService } from "./categoriaService";
+import { CategoriaService } from "./categoria.service";
 
 @Route("categorias")
 @Tags("Categorias")

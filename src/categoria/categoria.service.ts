@@ -1,11 +1,11 @@
 import {
   ERRO_CATEGORIA_JA_EXISTE,
   ERRO_CATEGORIA_POSSUI_POSTS,
-} from "../common/messages";
-import { categorias } from "./categoriasDB";
-import { PostService } from "../post/postService";
+} from "../common/mensagens";
+import { categorias } from "./categorias.db";
+import { PostService } from "../post/post.service";
 import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
-import { validarCamposObrigatorios } from "../common/validation";
+import { validarCamposObrigatorios } from "../common/validacao.util";
 import { Categoria } from "./categoria";
 
 export class CategoriaService {

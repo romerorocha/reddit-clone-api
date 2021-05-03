@@ -1,7 +1,7 @@
 {
   "entryFile": "src/index.ts",
   "noImplicitAdditionalProperties": "throw-on-extras",
-  "controllerPathGlobs": ["src/**/*Controller.ts"],
+  "controllerPathGlobs": ["src/**/*.controller.ts"],
   "spec": {
     "outputDirectory": "./api-docs",
     "specVersion": 3,
@@ -11,6 +11,6 @@
   },
   "routes": {
     "routesDir": "./api-docs",
-    "authenticationModule": "src/middleware/authentication.ts"
+    "authenticationModule": "src/middleware/autenticacao.ts"
   }
 }

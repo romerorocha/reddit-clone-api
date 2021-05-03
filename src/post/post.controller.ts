@@ -12,9 +12,9 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
-import { Voto } from "../common/voto";
+import { Voto } from "../voto/voto";
 import { Post } from "./post";
-import { PostParams, PostService } from "./postService";
+import { PostParams, PostService } from "./post.service";
 
 @Route("posts")
 @Tags("Posts")
