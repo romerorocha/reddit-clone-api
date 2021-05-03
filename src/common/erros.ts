@@ -1,41 +1,40 @@
-export class ErroAutorizacao extends Error {
+export class HttpError extends Error {
   status: number;
   mensagem: string;
   nome: string;
 
+  constructor(status: number, mensagem: string, nome: string) {
+    super(mensagem);
+    this.status = status;
+    this.mensagem = mensagem;
+    this.nome = nome;
+  }
+}
+
+export class ErroAutorizacao extends HttpError {
   constructor() {
     const mensagem =
       "YOU SHALL NOT PASS! (at least, not without an authorization header)";
 
-    super(mensagem);
-    this.status = 403;
-    this.mensagem = mensagem;
-    this.nome = "ErroAutorizacao";
+    super(403, mensagem, "ErroAutorizacao");
   }
 }
 
-export class ErroValidacao extends Error {
-  status: number;
-  mensagem: string;
-  nome: string;
-
-  constructor(mensagem) {
-    super(mensagem);
-    this.status = 400;
-    this.mensagem = mensagem;
-    this.nome = "ErroValidacao";
+export class ErroValidacao extends HttpError {
+  constructor(mensagem: string) {
+    super(400, mensagem, "ErroValidacao");
   }
 }
 
 export class ErroRegistroInexistente extends ErroValidacao {
-  constructor(id) {
+  constructor(id: string) {
     super(`Registro '${id}' não existe.`);
     this.nome = "ErroRegistroInexistente";
   }
 }
 
 export class ErroCampoObrigatorio extends ErroValidacao {
-  constructor(campos) {
+  constructor(campos: string[]) {
     let mensagem;
     if (campos.length > 1) {
       mensagem = `Os campos ${campos.join(", ")} são obrigatórios.`;

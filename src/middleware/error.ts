@@ -1,10 +1,18 @@
-export const logErrors = (err, req, res, next) => {
+import { NextFunction, Request, Response } from "express";
+import { HttpError } from "src/common/erros";
+
+export const logErrors = (
+  err: HttpError,
+  _: Request,
+  __: Response,
+  next: NextFunction
+) => {
   console.error(err.stack);
   next(err);
 };
 
 // eslint-disable-next-line no-unused-vars
-export const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err: HttpError, _: Request, res: Response) => {
   if (err.status) {
     res.status(err.status).send(err);
   } else {

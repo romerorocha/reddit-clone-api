@@ -1,12 +1,9 @@
-export interface BaseComentario {
+export interface Comentario {
+  id: string;
   idPai: string;
+  timestamp: number;
   corpo: string;
   autor: string;
-}
-
-export interface Comentario extends BaseComentario {
-  id: string;
-  timestamp: number;
   nota: number;
 }
 

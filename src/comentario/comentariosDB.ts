@@ -1,4 +1,4 @@
-import { Comentarios } from "../model/comentario";
+import { Comentarios } from "./comentario";
 
 export const comentarios: Comentarios = {
   "b54ef100-a9c8-11eb-bcbc-0242ac130002": {

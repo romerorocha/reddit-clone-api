@@ -1,4 +1,4 @@
-import { Posts } from "../model/post";
+import { Posts } from "./post";
 
 export const posts: Posts = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
@@ -9,7 +9,6 @@ export const posts: Posts = {
     autor: "Merry_D0_C0Nd4d0",
     categoria: "senhor-dos-aneis",
     nota: -10,
-    excluido: false,
     numeroComentarios: 1,
   },
   "021f115e-a8fc-11eb-bcbc-0242ac130002": {
@@ -21,7 +20,6 @@ export const posts: Posts = {
     autor: "Legolas_JP",
     categoria: "senhor-dos-aneis",
     nota: 12,
-    excluido: false,
     numeroComentarios: 2,
   },
   "efa6a84c-a8f2-11eb-bcbc-0242ac130002": {
@@ -32,7 +30,6 @@ export const posts: Posts = {
     autor: "Serverino Portões",
     categoria: "react",
     nota: 5,
-    excluido: false,
     numeroComentarios: 0,
   },
 };

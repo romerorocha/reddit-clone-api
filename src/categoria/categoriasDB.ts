@@ -1,4 +1,4 @@
-import { Categorias } from "../model/categoria";
+import { Categorias } from "./categoria";
 
 export const categorias: Categorias = {
   react: { nome: "React", path: "react" },

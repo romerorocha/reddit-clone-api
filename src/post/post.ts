@@ -1,12 +1,9 @@
-export interface BasePost {
+export interface Post {
+  id: string;
   titulo: string;
   corpo: string;
   autor: string;
   categoria: string;
-}
-
-export interface Post extends BasePost {
-  id: string;
   timestamp: number;
   nota: number;
   numeroComentarios: number;
