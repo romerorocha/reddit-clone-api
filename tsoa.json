@@ -3,14 +3,14 @@
   "noImplicitAdditionalProperties": "throw-on-extras",
   "controllerPathGlobs": ["src/**/*Controller.ts"],
   "spec": {
-    "outputDirectory": "build/api-docs",
+    "outputDirectory": "./api-docs",
     "specVersion": 3,
     "securityDefinitions": {
       "bearerAuth": { "type": "http", "scheme": "bearer" }
     }
   },
   "routes": {
-    "routesDir": "build",
+    "routesDir": "./api-docs",
     "authenticationModule": "src/middleware/authentication.ts"
   }
 }

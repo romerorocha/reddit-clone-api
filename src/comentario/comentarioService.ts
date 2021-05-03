@@ -16,7 +16,7 @@ export class ComentarioService {
   public listar(idPai: string): Comentario[] {
     validarCamposObrigatorios(idPai);
 
-    return Object.values(comentarios);
+    return Object.values(comentarios).filter((c) => c.idPai === idPai);
   }
 
   public criar = (idPai: string, comentario: ComentarioParams) => {
