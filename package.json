@@ -5,7 +5,7 @@
   "author": "Claudio Romero",
   "main": "build/src/index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "prebuild": "rimraf build/* && rimraf api-docs/*",
     "build": "tsoa spec-and-routes && tsc",
     "start": "node build/src/index.js",
@@ -20,15 +20,17 @@
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
+    "concurrently": "^6.0.2",
     "eslint": "^7.3.1",
-    "ts-node-dev": "^1.1.6",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "rimraf": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "rimraf": "^3.0.2",
     "swagger-ui-express": "^4.1.4",
     "tsoa": "^3.7.0",
     "uuid": "^8.2.0"
