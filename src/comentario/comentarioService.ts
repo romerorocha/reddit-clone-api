@@ -1,4 +1,4 @@
-import { OpcaoVoto, Voto } from "src/common/voto";
+import { OpcaoVoto, Voto } from "../common/voto";
 import { v1 as uuidv1 } from "uuid";
 import { ERRO_VOTO_INVALIDO } from "../common/messages";
 import { comentarios } from "./comentariosDB";
@@ -66,7 +66,7 @@ export class ComentarioService {
     return comentario;
   };
 
-  public excluir = (id: string): Comentario => {
+  public excluir = (id: string): string => {
     validarCamposObrigatorios(id);
 
     const comentario = comentarios[id];
@@ -77,7 +77,7 @@ export class ComentarioService {
     new PostService().atualizarContadorComentarios(comentario.idPai, -1);
     delete comentarios[id];
 
-    return comentario;
+    return id;
   };
 
   public excluirListaComentarios = (idPai: string) => {

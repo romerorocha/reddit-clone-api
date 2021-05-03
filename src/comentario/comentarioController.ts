@@ -1,31 +1,58 @@
-// import { Router } from "express";
-// import * as comentarioService from "../comentario/comentarioService";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Path,
+  Post,
+  Put,
+  Route,
+  SuccessResponse,
+} from "tsoa";
+import { Voto } from "../common/voto";
+import { Comentario } from "./comentario";
+import { ComentarioParams, ComentarioService } from "./comentarioService";
 
-// const router = Router();
+@Route("comentarios")
+export class ComentarioController extends Controller {
+  @Get("{idPai}")
+  public async listar(@Path() idPai: string): Promise<Comentario[]> {
+    return new ComentarioService().listar(idPai);
+  }
 
-// router.get("/:idPai", (req, res) => {
-//   const comentarios = comentarioService.listar(req.params?.idPai);
-//   res.send(comentarios);
-// });
+  @SuccessResponse("201", "Created")
+  @Post("{idPai}")
+  public async criar(
+    @Path() idPai: string,
+    @Body() requestBody: ComentarioParams
+  ): Promise<Comentario> {
+    this.setStatus(201);
+    return new ComentarioService().criar(idPai, requestBody);
+  }
 
-// router.post("/", (req, res) => {
-//   const comentario = comentarioService.criar(req.body);
-//   res.send(comentario);
-// });
+  @SuccessResponse("200", "Ok")
+  @Put("{idPai}")
+  public async atualizar(
+    @Path() idPai: string,
+    @Body() requestBody: ComentarioParams
+  ): Promise<Comentario> {
+    this.setStatus(200);
+    return new ComentarioService().atualizar(idPai, requestBody);
+  }
 
-// router.put("/:id", (req, res) => {
-//   const comentario = comentarioService.atualizar(req.params?.id, req.body);
-//   res.send(comentario);
-// });
+  @SuccessResponse("200", "Ok")
+  @Put("{idComentario}/votar")
+  public async votar(
+    @Path() idComentario: string,
+    @Body() requestBody: Voto
+  ): Promise<Comentario> {
+    this.setStatus(200);
+    return new ComentarioService().votar(idComentario, requestBody);
+  }
 
-// router.put("/:id/votar", (req, res) => {
-//   const comentario = comentarioService.votar(req.params?.id, req.body?.opcao);
-//   res.send(comentario);
-// });
-
-// router.delete("/:id", (req, res) => {
-//   const comentario = comentarioService.excluir(req.params?.id);
-//   res.send(comentario);
-// });
-
-// export default router;
+  @SuccessResponse("200", "Ok")
+  @Delete("{idComentario}")
+  public async excluir(@Path() idComentario: string): Promise<string> {
+    return new ComentarioService().excluir(idComentario);
+  }
+}

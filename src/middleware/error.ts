@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { HttpError } from "src/common/erros";
+import { HttpError } from "../common/erros";
 
 export const logErrors = (
   err: HttpError,

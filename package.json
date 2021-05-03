@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "license": "MIT",
   "author": "Claudio Romero",
-  "main": "src/server.js",
+  "main": "build/src/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-    "prebuild": "rimraf build/*",
-    "build": "babel -d ./build ./src",
-    "start": "babel-node src/server.js",
+    "build": "tsoa spec-and-routes && tsc",
+    "start": "node build/src/index.js",
     "start:production": "NODE_ENV=production node ./build/index.js"
   },
   "devDependencies": {

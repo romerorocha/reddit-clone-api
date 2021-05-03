@@ -1,12 +1,16 @@
 {
-  "entryFile": "src/server.ts",
+  "entryFile": "src/index.ts",
   "noImplicitAdditionalProperties": "throw-on-extras",
   "controllerPathGlobs": ["src/**/*Controller.ts"],
   "spec": {
     "outputDirectory": "docs",
-    "specVersion": 3
+    "specVersion": 3,
+    "securityDefinitions": {
+      "bearerAuth": { "type": "http", "scheme": "bearer" }
+    }
   },
   "routes": {
-    "routesDir": "build"
+    "routesDir": "build",
+    "authenticationModule": "src/middleware/authentication.ts"
   }
 }

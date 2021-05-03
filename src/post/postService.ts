@@ -1,4 +1,4 @@
-import { ComentarioService } from "src/comentario/comentarioService";
+import { ComentarioService } from "../comentario/comentarioService";
 import { v1 as uuidv1 } from "uuid";
 import { OpcaoVoto, Voto } from "../common/voto";
 import { ERRO_VOTO_INVALIDO } from "../common/messages";

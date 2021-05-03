@@ -5,6 +5,7 @@
     "target": "es6",
     "module": "commonjs",
     "outDir": "build",
+    "resolveJsonModule": true,
 
     /* Strict Type-Checking Options */
     "strict": true,
@@ -24,7 +25,7 @@
 
     /* Module Resolution Options */
     "moduleResolution": "node",
-    "baseUrl": ".",
+    // "baseUrl": ".",
     "esModuleInterop": true,
 
     /* Experimental Options */

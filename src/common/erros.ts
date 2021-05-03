@@ -1,13 +1,13 @@
 export class HttpError extends Error {
   status: number;
-  mensagem: string;
-  nome: string;
+  message: string;
+  name: string;
 
-  constructor(status: number, mensagem: string, nome: string) {
-    super(mensagem);
+  constructor(status: number, message: string, name: string) {
+    super(message);
     this.status = status;
-    this.mensagem = mensagem;
-    this.nome = nome;
+    this.message = message;
+    this.name = name;
   }
 }
 
@@ -29,7 +29,7 @@ export class ErroValidacao extends HttpError {
 export class ErroRegistroInexistente extends ErroValidacao {
   constructor(id: string) {
     super(`Registro '${id}' não existe.`);
-    this.nome = "ErroRegistroInexistente";
+    this.name = "ErroRegistroInexistente";
   }
 }
 
@@ -43,6 +43,6 @@ export class ErroCampoObrigatorio extends ErroValidacao {
     }
 
     super(mensagem);
-    this.nome = "ErroCampoObrigatorio";
+    this.name = "ErroCampoObrigatorio";
   }
 }
