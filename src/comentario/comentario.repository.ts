@@ -59,6 +59,9 @@ export class ComentarioRepository {
     let { id, idPai } = comentario;
 
     id = id ?? uuidv1();
+    if(!comentarios[idPai]) {
+      comentarios[idPai] =  {}
+    }
     comentarios[idPai][id] = { ...comentario, id };
 
     return comentarios[idPai][id];

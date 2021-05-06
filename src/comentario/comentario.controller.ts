@@ -35,13 +35,13 @@ export class ComentarioController extends Controller {
   }
 
   @SuccessResponse("200", "Ok")
-  @Put("{idPai}")
+  @Put("{idComentario}")
   public async atualizar(
-    @Path() idPai: string,
+    @Path() idComentario: string,
     @Body() requestBody: ComentarioParams
   ): Promise<IComentario> {
     this.setStatus(200);
-    return new ComentarioService().atualizar(idPai, requestBody);
+    return new ComentarioService().atualizar(idComentario, requestBody);
   }
 
   @SuccessResponse("200", "Ok")
