@@ -1,6 +1,6 @@
-import { ICategoria, ICategorias } from "./categoria";
+import { CategoriaType, CategoriasType } from ".";
 
-export const categorias: ICategorias = {
+export const categorias: CategoriasType = {
   react: { nome: "React", path: "react" },
   javascript: { nome: "JavaScript", path: "javascript" },
   "senhor-dos-aneis": {
@@ -10,15 +10,15 @@ export const categorias: ICategorias = {
 };
 
 export class CategoriaRepository {
-  public obter(path: string): ICategoria {
+  public obter(path: string): CategoriaType {
     return categorias[path];
   }
 
-  public listar(): ICategoria[] {
+  public listar(): CategoriaType[] {
     return Object.values(categorias);
   }
 
-  public salvar(categoria: ICategoria): ICategoria {
+  public salvar(categoria: CategoriaType): CategoriaType {
     const { path } = categoria;
     if (path) {
       categorias[path] = categoria;

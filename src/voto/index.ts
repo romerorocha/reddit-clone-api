@@ -3,6 +3,6 @@ export enum OpcaoVoto {
   Negativo = "negativo",
 }
 
-export interface Voto {
+export type Voto = {
   opcao: OpcaoVoto.Positivo | OpcaoVoto.Negativo;
-}
+};

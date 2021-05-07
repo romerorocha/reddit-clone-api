@@ -1,10 +1,4 @@
-import { ErroCampoObrigatorio, ErroRegistroInexistente } from "./erros";
-
-export const validarExistenciaRegistro = (id: string, objeto: any) => {
-  if (!objeto[id] || objeto[id].excluido) {
-    throw new ErroRegistroInexistente(id);
-  }
-};
+import { ErroCampoObrigatorio } from "./erros";
 
 export const validarCamposObrigatorios = (...campos: any) => {
   const nomes = [];

@@ -1,15 +1,20 @@
+import { ComentarioParams, ComentarioRepository, ComentarioType } from ".";
 import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
 import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
-import { validarCamposObrigatorios } from "../common/validacao.util";
-import { PostService } from "../post/post.service";
-import { OpcaoVoto, Voto } from "../voto/voto";
-import { IComentario } from "./comentario";
-import { ComentarioRepository } from "./comentario.repository";
-
-export type ComentarioParams = Pick<IComentario, "autor" | "corpo">;
+import { validarCamposObrigatorios } from "../common/validadores";
+import { PostService } from "../post";
+import { OpcaoVoto, Voto } from "../voto";
 
 export class ComentarioService {
-  public listar(idPai: string): IComentario[] {
+  private obterOuLancarExcecao(id: string): ComentarioType {
+    const comentario = new ComentarioRepository().obter(id);
+    if (!comentario || !comentario.id) {
+      throw new ErroRegistroInexistente(id);
+    }
+    return comentario;
+  }
+
+  public listar(idPai: string): ComentarioType[] {
     validarCamposObrigatorios(idPai);
     return new ComentarioRepository().listar(idPai);
   }
@@ -19,6 +24,7 @@ export class ComentarioService {
 
     const postService = new PostService();
     postService.validarExistenciaPost(idPai);
+
     postService.atualizarContadorComentarios(idPai, 1);
 
     return new ComentarioRepository().salvar({
@@ -32,20 +38,16 @@ export class ComentarioService {
 
   public atualizar = (id: string, comentario: ComentarioParams) => {
     validarCamposObrigatorios({ id, ...comentario });
-    this.validarExistenciaComentario(id);
-
-    const repository = new ComentarioRepository();
-    const comentarioExistente = repository.obter(id);
-
-    return repository.salvar({ ...comentarioExistente, ...comentario });
+    const comentarioExistente = this.obterOuLancarExcecao(id);
+    return new ComentarioRepository().salvar({
+      ...comentarioExistente,
+      ...comentario,
+    });
   };
 
   public votar = (id: string, voto: Voto) => {
     validarCamposObrigatorios(id);
-    this.validarExistenciaComentario(id);
-
-    const repository = new ComentarioRepository();
-    const comentario = repository.obter(id);
+    const comentario = this.obterOuLancarExcecao(id);
 
     switch (voto.opcao) {
       case OpcaoVoto.Positivo:
@@ -58,28 +60,13 @@ export class ComentarioService {
         throw new ErroValidacao(ERRO_VOTO_INVALIDO);
     }
 
-    return repository.salvar(comentario);
+    return new ComentarioRepository().salvar(comentario);
   };
 
   public excluir = (id: string): string => {
     validarCamposObrigatorios(id);
-
-    const repository = new ComentarioRepository();
-
-    const comentario = repository.obter(id);
-    if (!comentario || !comentario.id) {
-      throw new ErroRegistroInexistente(id);
-    }
-
+    const comentario = this.obterOuLancarExcecao(id);
     new PostService().atualizarContadorComentarios(comentario.idPai, -1);
-
-    return repository.excluir(id);
+    return new ComentarioRepository().excluir(id);
   };
-
-  validarExistenciaComentario(id: string) {
-    const comentario = new ComentarioRepository().obter(id);
-    if (!comentario || !comentario.id) {
-      throw new ErroRegistroInexistente(id);
-    }
-  }
 }

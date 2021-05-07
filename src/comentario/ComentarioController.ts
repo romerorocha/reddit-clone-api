@@ -11,16 +11,15 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
-import { Voto } from "../voto/voto";
-import { IComentario } from "./comentario";
-import { ComentarioParams, ComentarioService } from "./comentario.service";
+import { ComentarioParams, ComentarioService, ComentarioType } from ".";
+import { Voto } from "../voto";
 
 @Route("comentarios")
 @Tags("Comentários")
 @Security("bearerAuth")
 export class ComentarioController extends Controller {
   @Get("{idPai}")
-  public async listar(@Path() idPai: string): Promise<IComentario[]> {
+  public async listar(@Path() idPai: string): Promise<ComentarioType[]> {
     return new ComentarioService().listar(idPai);
   }
 
@@ -29,7 +28,7 @@ export class ComentarioController extends Controller {
   public async criar(
     @Path() idPai: string,
     @Body() requestBody: ComentarioParams
-  ): Promise<IComentario> {
+  ): Promise<ComentarioType> {
     this.setStatus(201);
     return new ComentarioService().criar(idPai, requestBody);
   }
@@ -39,7 +38,7 @@ export class ComentarioController extends Controller {
   public async atualizar(
     @Path() idComentario: string,
     @Body() requestBody: ComentarioParams
-  ): Promise<IComentario> {
+  ): Promise<ComentarioType> {
     this.setStatus(200);
     return new ComentarioService().atualizar(idComentario, requestBody);
   }
@@ -49,7 +48,7 @@ export class ComentarioController extends Controller {
   public async votar(
     @Path() idComentario: string,
     @Body() requestBody: Voto
-  ): Promise<IComentario> {
+  ): Promise<ComentarioType> {
     this.setStatus(200);
     return new ComentarioService().votar(idComentario, requestBody);
   }

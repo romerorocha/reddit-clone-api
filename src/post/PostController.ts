@@ -12,16 +12,15 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
-import { Voto } from "../voto/voto";
-import { IPost } from "./post";
-import { PostParams, PostService } from "./post.service";
+import { PostParams, PostService, PostType } from ".";
+import { Voto } from "../voto";
 
 @Route("posts")
 @Tags("Posts")
 @Security("bearerAuth")
 export class PostController extends Controller {
   @Get()
-  public async listar(@Query() categoria?: string): Promise<IPost[]> {
+  public async listar(@Query() categoria?: string): Promise<PostType[]> {
     if (!categoria) {
       return new PostService().listar();
     }
@@ -30,13 +29,13 @@ export class PostController extends Controller {
 
   @SuccessResponse("201", "Created")
   @Post()
-  public async criar(@Body() requestBody: PostParams): Promise<IPost> {
+  public async criar(@Body() requestBody: PostParams): Promise<PostType> {
     this.setStatus(201);
     return new PostService().criar(requestBody);
   }
 
   @Get("{idPost}")
-  public async obterPorId(@Path() idPost: string): Promise<IPost> {
+  public async obterPorId(@Path() idPost: string): Promise<PostType> {
     return new PostService().obterPorId(idPost);
   }
 
@@ -45,7 +44,7 @@ export class PostController extends Controller {
   public async atualizar(
     @Path() idPost: string,
     @Body() requestBody: PostParams
-  ): Promise<IPost> {
+  ): Promise<PostType> {
     this.setStatus(200);
     return new PostService().atualizar(idPost, requestBody);
   }
@@ -55,7 +54,7 @@ export class PostController extends Controller {
   public async votar(
     @Path() idPost: string,
     @Body() requestBody: Voto
-  ): Promise<IPost> {
+  ): Promise<PostType> {
     this.setStatus(200);
     return new PostService().votar(idPost, requestBody);
   }

@@ -1,19 +1,18 @@
+import { CategoriaRepository, CategoriaType } from ".";
 import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
 import {
   ERRO_CATEGORIA_JA_EXISTE,
   ERRO_CATEGORIA_POSSUI_POSTS,
 } from "../common/mensagens";
-import { validarCamposObrigatorios } from "../common/validacao.util";
-import { PostService } from "../post/post.service";
-import { ICategoria } from "./categoria";
-import { CategoriaRepository } from "./categoria.repository";
+import { validarCamposObrigatorios } from "../common/validadores";
+import { PostService } from "../post";
 
 export class CategoriaService {
-  public listar(): ICategoria[] {
+  public listar(): CategoriaType[] {
     return new CategoriaRepository().listar();
   }
 
-  public criar(categoria: ICategoria): ICategoria {
+  public criar(categoria: CategoriaType): CategoriaType {
     const { path, nome } = categoria;
     validarCamposObrigatorios(nome, path);
 
