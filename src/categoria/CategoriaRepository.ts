@@ -1,12 +1,18 @@
 import { CategoriaType, CategoriasType } from ".";
 
-const categorias: CategoriasType = {
+const init: CategoriasType = {
   react: { nome: "React", path: "react" },
   javascript: { nome: "JavaScript", path: "javascript" },
   "senhor-dos-aneis": {
     nome: "Senhor dos Anéis",
     path: "senhor-dos-aneis",
   },
+};
+
+let categorias = { ...init };
+
+export const resetCategorias = () => {
+  categorias = { ...init };
 };
 
 export default class CategoriaRepository {

@@ -7,6 +7,7 @@
   "scripts": {
     "clean": "rimraf build/* && rimraf api-docs/*",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
+    "test": "jest",
     "prebuild": "rimraf build/* && rimraf api-docs/*",
     "build": "tsoa spec-and-routes && tsc",
     "start": "node build/src/index.js",
@@ -16,6 +17,7 @@
     "@types/cors": "^2.8.10",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.11",
+    "@types/jest": "^26.0.23",
     "@types/node": "^15.0.1",
     "@types/swagger-ui-express": "^4.1.2",
     "@types/uuid": "^8.3.0",
@@ -23,7 +25,10 @@
     "@typescript-eslint/parser": "^4.22.0",
     "concurrently": "^6.0.2",
     "eslint": "^7.3.1",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.6",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   },
@@ -31,7 +36,6 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "rimraf": "^3.0.2",
     "swagger-ui-express": "^4.1.4",
     "tsoa": "^3.7.0",
     "uuid": "^8.2.0"
