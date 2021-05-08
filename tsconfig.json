@@ -33,5 +33,6 @@
 
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["**/*/__tests__"]
 }

@@ -47,12 +47,8 @@ export default class PostRepository {
     return Object.values(posts);
   }
 
-  public obterPorId = (id: string): any => {
-    let post;
-    if (id) {
-      post = posts[id];
-    }
-    return post;
+  public obterPorId = (id: string): PostType => {
+    return posts[id];
   };
 
   public salvar = (post: PostType): PostType => {
