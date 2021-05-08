@@ -24,7 +24,7 @@ describe("Salvar comentário", () => {
     nota: 0,
   };
 
-  it("Sucesso", () => {
+  it("Cadastra novo comentário", () => {
     expect(repository.salvar(input).id).toBeDefined();
   });
 
@@ -47,7 +47,7 @@ describe("Salvar comentário", () => {
 });
 
 describe("Excluir comentario", () => {
-  it("Sucesso", () => {
+  it("Exclui comentário pelo id", () => {
     expect(repository.excluir("66e87710-a9c9-11eb-bcbc-0242ac130002")).toBe(
       "66e87710-a9c9-11eb-bcbc-0242ac130002"
     );
@@ -59,7 +59,7 @@ describe("Excluir comentario", () => {
 });
 
 describe("Excluir lista comentários", () => {
-  it("Sucesso", () => {
+  it("Exclui lista completa", () => {
     expect(
       repository.excluirPorPai("021f115e-a8fc-11eb-bcbc-0242ac130002")
     ).toBe(2);

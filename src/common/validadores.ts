@@ -1,9 +1,9 @@
 import { ErroCampoObrigatorio } from "./erros";
 
-export const validarCamposObrigatorios = (...campos: any) => {
+export const validarCamposObrigatorios = (campos: any) => {
   const nomes = [];
   for (const key in campos) {
-    if (!campos[key]) {
+    if (!!!campos[key]) {
       nomes.push("'" + key + "'");
     }
   }

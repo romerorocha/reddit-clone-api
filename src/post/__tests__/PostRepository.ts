@@ -8,15 +8,16 @@ beforeEach(() => {
 });
 
 describe("Listar posts", () => {
-  it("Sucesso", () => {
+  it("Lista todos os posts", () => {
     expect(repository.listar()).toHaveLength(3);
   });
 });
 
 describe("Obter post pelo id", () => {
-  it("Sucesso", () => {
+  it("Obtém um post pelo id", () => {
     const id = "021f115e-a8fc-11eb-bcbc-0242ac130002";
     const post = repository.obterPorId(id);
+
     expect(post.id).toBe(id);
     expect(post.titulo).toBe("They're taking the Hobbits to Isengard!");
   });
@@ -37,7 +38,7 @@ describe("Salvar post", () => {
     numeroComentarios: 0,
   };
 
-  it("Sucesso", () => {
+  it("Cadastra novo post", () => {
     expect(repository.salvar(input).id).toBeDefined();
   });
 
@@ -52,7 +53,7 @@ describe("Salvar post", () => {
 });
 
 describe("Excluir post", () => {
-  it("Sucesso", () => {
+  it("Exclui post pelo id", () => {
     expect(repository.excluir("021f115e-a8fc-11eb-bcbc-0242ac130002")).toBe(
       "021f115e-a8fc-11eb-bcbc-0242ac130002"
     );

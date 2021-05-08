@@ -7,13 +7,13 @@ beforeEach(() => {
 });
 
 describe("Listar categorias", () => {
-  it("Lista iniciais existentes", () => {
+  it("Lista categorias existentes", () => {
     expect(repository.listar()).toHaveLength(3);
   });
 });
 
-describe("Obter categoria pelo path", () => {
-  it("Sucesso", () => {
+describe("Obter categoria", () => {
+  it("Obtém categoria pelo path", () => {
     const cat = { path: "senhor-dos-aneis", nome: "Senhor dos Anéis" };
     expect(repository.obter("senhor-dos-aneis")).toEqual(cat);
   });
@@ -24,7 +24,7 @@ describe("Obter categoria pelo path", () => {
 });
 
 describe("Salvar categoria", () => {
-  it("Sucesso", () => {
+  it("Cadastra nova categoria", () => {
     const cat = { path: "two-towers", nome: "As Duas Torres" };
     repository.salvar(cat);
     expect(repository.obter("two-towers")).toEqual(cat);
@@ -35,7 +35,7 @@ describe("Salvar categoria", () => {
     expect(repository.salvar(cat)).toBeUndefined();
   });
 
-  it("Atualiza path existente", () => {
+  it("Atualiza categoria de mesmo path", () => {
     const path = "the-return";
     repository.salvar({ path, nome: "The Return" });
     expect(repository.obter(path).nome).toBe("The Return");
@@ -46,7 +46,7 @@ describe("Salvar categoria", () => {
 });
 
 describe("Excluir categoria", () => {
-  it("Sucesso", () => {
+  it("Exclui categora do path informado", () => {
     expect(repository.excluir("react")).toBe("react");
   });
 
