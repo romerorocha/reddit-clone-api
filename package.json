@@ -8,6 +8,7 @@
     "clean": "rimraf build/* && rimraf api-docs/*",
     "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "test": "jest",
+    "coverage": "jest --coverage",
     "prebuild": "rimraf build/* && rimraf api-docs/*",
     "build": "tsoa spec-and-routes && tsc",
     "start": "node build/src/index.js",
