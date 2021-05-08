@@ -8,13 +8,8 @@ import { validarCamposObrigatorios } from "../common/validadores";
 import { PostService } from "../post";
 
 export default class CategoriaService {
-  repository: CategoriaRepository;
-  postService: PostService;
-
-  constructor() {
-    this.repository = new CategoriaRepository();
-    this.postService = new PostService();
-  }
+  readonly repository = new CategoriaRepository();
+  readonly postService = new PostService();
 
   public listar(): CategoriaType[] {
     return this.repository.listar();
