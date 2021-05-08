@@ -1,7 +1,8 @@
 import { ComentarioType, ComentariosType } from ".";
 import { v1 as uuidv1 } from "uuid";
+import clone from "clone";
 
-const comentarios: ComentariosType = {
+const init: ComentariosType = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
     "b54ef100-a9c8-11eb-bcbc-0242ac130002": {
       id: "b54ef100-a9c8-11eb-bcbc-0242ac130002",
@@ -33,6 +34,12 @@ const comentarios: ComentariosType = {
   },
 };
 
+let comentarios = clone(init);
+
+export const resetComentariosDB = () => {
+  comentarios = clone(init);
+};
+
 export default class ComentarioRepository {
   public obter(id: string): any {
     let comentario;
@@ -55,13 +62,15 @@ export default class ComentarioRepository {
     return Object.values(comentarios[idPai]);
   }
 
-  public salvar = (comentario: ComentarioType) => {
+  public salvar = (comentario: ComentarioType): any => {
     let { id, idPai } = comentario;
 
-    id = id ?? uuidv1();
-    if (!comentarios[idPai]) {
-      comentarios[idPai] = {};
+    if (!idPai) {
+      return {};
     }
+
+    id = id ?? uuidv1();
+    comentarios[idPai] = comentarios[idPai] ?? {};
     comentarios[idPai][id] = { ...comentario, id };
 
     return comentarios[idPai][id];
@@ -78,9 +87,13 @@ export default class ComentarioRepository {
     return "";
   };
 
-  public excluirPorPai = (idPai: string) => {
-    if (idPai) {
-      delete comentarios[idPai];
+  public excluirPorPai = (idPai: string): number => {
+    if (!comentarios[idPai]) {
+      return 0;
     }
+
+    const numeroComentarios = Object.keys(comentarios[idPai]).length;
+    delete comentarios[idPai];
+    return numeroComentarios;
   };
 }

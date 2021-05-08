@@ -49,11 +49,9 @@ export default class PostRepository {
 
   public obterPorId = (id: string): any => {
     let post;
-
     if (id) {
       post = posts[id];
     }
-
     return post;
   };
 
@@ -68,7 +66,6 @@ export default class PostRepository {
       delete posts[id];
       return id;
     }
-
     return "";
   };
 }
