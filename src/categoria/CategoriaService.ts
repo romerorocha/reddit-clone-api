@@ -7,7 +7,7 @@ import {
 import { validarCamposObrigatorios } from "../common/validadores";
 import { PostService } from "../post";
 
-export class CategoriaService {
+export default class CategoriaService {
   public listar(): CategoriaType[] {
     return new CategoriaRepository().listar();
   }

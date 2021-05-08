@@ -5,7 +5,7 @@ import { validarCamposObrigatorios } from "../common/validadores";
 import { PostService } from "../post";
 import { OpcaoVoto, Voto } from "../voto";
 
-export class ComentarioService {
+export default class ComentarioService {
   private obterOuLancarExcecao(id: string): ComentarioType {
     const comentario = new ComentarioRepository().obter(id);
     if (!comentario || !comentario.id) {

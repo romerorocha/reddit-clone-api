@@ -1,7 +1,7 @@
 import { v1 as uuidv1 } from "uuid";
 import { PostType, PostsType } from ".";
 
-export const posts: PostsType = {
+const posts: PostsType = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
     id: "e49bc914-a8f2-11eb-bcbc-0242ac130002",
     timestamp: 1619704748161,
@@ -35,7 +35,7 @@ export const posts: PostsType = {
   },
 };
 
-export class PostRepository {
+export default class PostRepository {
   public listar(): PostType[] {
     return Object.values(posts);
   }

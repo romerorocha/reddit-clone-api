@@ -1,5 +1,5 @@
-import { CategoriaRepository } from "./CategoriaRepository";
-import { CategoriaService } from "./CategoriaService";
+import CategoriaRepository from "./CategoriaRepository";
+import CategoriaService from "./CategoriaService";
 
 type CategoriaType = {
   path: string;

@@ -1,6 +1,6 @@
 import { CategoriaType, CategoriasType } from ".";
 
-export const categorias: CategoriasType = {
+const categorias: CategoriasType = {
   react: { nome: "React", path: "react" },
   javascript: { nome: "JavaScript", path: "javascript" },
   "senhor-dos-aneis": {
@@ -9,7 +9,7 @@ export const categorias: CategoriasType = {
   },
 };
 
-export class CategoriaRepository {
+export default class CategoriaRepository {
   public obter(path: string): CategoriaType {
     return categorias[path];
   }

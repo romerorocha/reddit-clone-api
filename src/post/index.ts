@@ -1,5 +1,5 @@
-import { PostService } from "./PostService";
-import { PostRepository } from "./PostRepository";
+import PostService from "./PostService";
+import PostRepository from "./PostRepository";
 
 type PostType = {
   id?: string;

@@ -1,5 +1,5 @@
-import { ComentarioRepository } from "./ComentarioRepository";
-import { ComentarioService } from "./ComentarioService";
+import ComentarioRepository from "./ComentarioRepository";
+import ComentarioService from "./ComentarioService";
 
 type ComentarioType = {
   id?: string;

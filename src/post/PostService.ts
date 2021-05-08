@@ -5,7 +5,7 @@ import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
 import { validarCamposObrigatorios } from "../common/validadores";
 import { OpcaoVoto, Voto } from "../voto";
 
-export class PostService {
+export default class PostService {
   public listar(): PostType[] {
     return new PostRepository().listar();
   }

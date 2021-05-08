@@ -1,7 +1,7 @@
 import { ComentarioType, ComentariosType } from ".";
 import { v1 as uuidv1 } from "uuid";
 
-export const comentarios: ComentariosType = {
+const comentarios: ComentariosType = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
     "b54ef100-a9c8-11eb-bcbc-0242ac130002": {
       id: "b54ef100-a9c8-11eb-bcbc-0242ac130002",
@@ -33,7 +33,7 @@ export const comentarios: ComentariosType = {
   },
 };
 
-export class ComentarioRepository {
+export default class ComentarioRepository {
   public obter(id: string): any {
     let comentario;
 
