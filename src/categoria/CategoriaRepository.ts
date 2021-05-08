@@ -11,7 +11,7 @@ const init: CategoriasType = {
 
 let categorias = { ...init };
 
-export const resetCategorias = () => {
+export const resetCategoriasDB = () => {
   categorias = { ...init };
 };
 

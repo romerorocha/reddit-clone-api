@@ -1,9 +1,9 @@
-import CategoriaRepository, { resetCategorias } from "../CategoriaRepository";
+import CategoriaRepository, { resetCategoriasDB } from "../CategoriaRepository";
 
 const repository = new CategoriaRepository();
 
 beforeEach(() => {
-  resetCategorias();
+  resetCategoriasDB();
 });
 
 describe("Listar categorias", () => {
@@ -15,7 +15,7 @@ describe("Listar categorias", () => {
 describe("Obter categoria pelo path", () => {
   it("Sucesso", () => {
     const cat = { path: "senhor-dos-aneis", nome: "Senhor dos Anéis" };
-    expect(repository.obter("senhor-dos-aneis")).toStrictEqual(cat);
+    expect(repository.obter("senhor-dos-aneis")).toEqual(cat);
   });
 
   it("Não obtém, path inexistente", () => {
@@ -27,7 +27,7 @@ describe("Salvar categoria", () => {
   it("Sucesso", () => {
     const cat = { path: "two-towers", nome: "As Duas Torres" };
     repository.salvar(cat);
-    expect(repository.obter("two-towers")).toStrictEqual(cat);
+    expect(repository.obter("two-towers")).toEqual(cat);
   });
 
   it("Não salva, path não informado", () => {
