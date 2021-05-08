@@ -1,4 +1,5 @@
 import { CategoriaType, CategoriasType } from ".";
+import clone from "clone";
 
 const init: CategoriasType = {
   react: { nome: "React", path: "react" },
@@ -9,10 +10,10 @@ const init: CategoriasType = {
   },
 };
 
-let categorias = { ...init };
+let categorias = clone(init);
 
 export const resetCategoriasDB = () => {
-  categorias = { ...init };
+  categorias = clone(init);
 };
 
 export default class CategoriaRepository {
