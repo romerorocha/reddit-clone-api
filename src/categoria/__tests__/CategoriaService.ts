@@ -1,10 +1,17 @@
 import { spy, verify, when } from "ts-mockito";
+import { CategoriaRepository } from "..";
+import { PostService } from "../../post";
 import CategoriaService from "../CategoriaService";
 
-const service = new CategoriaService();
+let service: CategoriaService;
+let repositorySpy: CategoriaRepository;
+let postServiceSpy: PostService;
 
-let repositorySpy = spy(service.repository);
-let postServiceSpy = spy(service.postService);
+beforeAll(() => {
+  service = new CategoriaService();
+  repositorySpy = spy(service.repository);
+  postServiceSpy = spy(service.postService);
+});
 
 describe("Listar categorias", () => {
   it("Lista categorias", () => {
