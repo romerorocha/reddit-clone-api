@@ -50,10 +50,10 @@ export default class ComentarioService {
     const comentario = this.obterOuLancarExcecao(id);
 
     switch (voto.opcao) {
-      case OpcaoVoto.Positivo:
+      case OpcaoVoto.positivo:
         comentario.nota++;
         break;
-      case OpcaoVoto.Negativo:
+      case OpcaoVoto.negativo:
         comentario.nota--;
         break;
       default:

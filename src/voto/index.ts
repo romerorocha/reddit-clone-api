@@ -1,8 +1,8 @@
 export enum OpcaoVoto {
-  Positivo = "positivo",
-  Negativo = "negativo",
+  positivo = "positivo",
+  negativo = "negativo",
 }
 
 export type Voto = {
-  opcao: OpcaoVoto.Positivo | OpcaoVoto.Negativo;
+  opcao: OpcaoVoto.positivo | OpcaoVoto.negativo;
 };

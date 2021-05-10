@@ -47,7 +47,7 @@ export default class PostRepository {
     return Object.values(posts);
   }
 
-  public obterPorId = (id: string): PostType => {
+  public obterPorId = (id: string): any => {
     return posts[id];
   };
 

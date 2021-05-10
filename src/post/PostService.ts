@@ -72,7 +72,7 @@ export default class PostService {
       throw new ErroRegistroInexistente(id);
     }
 
-    const incremento = voto.opcao === OpcaoVoto.Positivo ? 1 : -1;
+    const incremento = voto.opcao === OpcaoVoto.positivo ? 1 : -1;
     return this.repository.salvar({ ...post, nota: post.nota + incremento });
   };
 
