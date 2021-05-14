@@ -13,6 +13,7 @@ import {
 } from "tsoa";
 import { ComentarioParams, ComentarioService, ComentarioType } from ".";
 import { Voto } from "../voto";
+import { asyncResponse } from "../common/util";
 
 @Route("comentarios")
 @Tags("Comentários")
@@ -20,7 +21,7 @@ import { Voto } from "../voto";
 export class ComentarioController extends Controller {
   @Get("{idPai}")
   public async listar(@Path() idPai: string): Promise<ComentarioType[]> {
-    return new ComentarioService().listar(idPai);
+    return await asyncResponse(new ComentarioService().listar(idPai));
   }
 
   @SuccessResponse("201", "Created")
@@ -30,7 +31,9 @@ export class ComentarioController extends Controller {
     @Body() requestBody: ComentarioParams
   ): Promise<ComentarioType> {
     this.setStatus(201);
-    return new ComentarioService().criar(idPai, requestBody);
+    return await asyncResponse(
+      new ComentarioService().criar(idPai, requestBody)
+    );
   }
 
   @SuccessResponse("200", "Ok")
@@ -40,7 +43,9 @@ export class ComentarioController extends Controller {
     @Body() requestBody: ComentarioParams
   ): Promise<ComentarioType> {
     this.setStatus(200);
-    return new ComentarioService().atualizar(idComentario, requestBody);
+    return await asyncResponse(
+      new ComentarioService().atualizar(idComentario, requestBody)
+    );
   }
 
   @SuccessResponse("200", "Ok")
@@ -50,12 +55,14 @@ export class ComentarioController extends Controller {
     @Body() requestBody: Voto
   ): Promise<ComentarioType> {
     this.setStatus(200);
-    return new ComentarioService().votar(idComentario, requestBody);
+    return await asyncResponse(
+      new ComentarioService().votar(idComentario, requestBody)
+    );
   }
 
   @SuccessResponse("200", "Ok")
   @Delete("{idComentario}")
   public async excluir(@Path() idComentario: string): Promise<string> {
-    return new ComentarioService().excluir(idComentario);
+    return await asyncResponse(new ComentarioService().excluir(idComentario));
   }
 }

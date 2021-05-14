@@ -14,6 +14,7 @@ import {
 } from "tsoa";
 import { PostParams, PostService, PostType } from ".";
 import { Voto } from "../voto";
+import { asyncResponse } from "../common/util";
 
 @Route("posts")
 @Tags("Posts")
@@ -21,22 +22,28 @@ import { Voto } from "../voto";
 export class PostController extends Controller {
   @Get()
   public async listar(@Query() categoria?: string): Promise<PostType[]> {
+    let posts: PostType[];
+
     if (!categoria) {
-      return new PostService().listar();
+      posts = new PostService().listar();
+    } else {
+      posts = new PostService().listarPorCategoria(categoria);
     }
-    return new PostService().listarPorCategoria(categoria);
+
+    return await asyncResponse(posts);
   }
 
   @SuccessResponse("201", "Created")
   @Post()
   public async criar(@Body() requestBody: PostParams): Promise<PostType> {
     this.setStatus(201);
-    return new PostService().criar(requestBody);
+    return await asyncResponse(new PostService().criar(requestBody));
   }
 
   @Get("{idPost}")
   public async obterPorId(@Path() idPost: string): Promise<PostType> {
-    return new PostService().obterPorId(idPost);
+    this.setStatus(200);
+    return await asyncResponse(new PostService().obterPorId(idPost));
   }
 
   @SuccessResponse("200", "Ok")
@@ -46,7 +53,9 @@ export class PostController extends Controller {
     @Body() requestBody: PostParams
   ): Promise<PostType> {
     this.setStatus(200);
-    return new PostService().atualizar(idPost, requestBody);
+    return await asyncResponse(
+      new PostService().atualizar(idPost, requestBody)
+    );
   }
 
   @SuccessResponse("200", "Ok")
@@ -56,12 +65,12 @@ export class PostController extends Controller {
     @Body() requestBody: Voto
   ): Promise<PostType> {
     this.setStatus(200);
-    return new PostService().votar(idPost, requestBody);
+    return await asyncResponse(new PostService().votar(idPost, requestBody));
   }
 
   @SuccessResponse("200", "Ok")
   @Delete("{idPost}")
   public async excluir(@Path() idPost: string): Promise<string> {
-    return new PostService().excluir(idPost);
+    return await asyncResponse(new PostService().excluir(idPost));
   }
 }

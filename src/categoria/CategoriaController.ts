@@ -11,6 +11,7 @@ import {
   Tags,
 } from "tsoa";
 import { CategoriaService, CategoriaType } from ".";
+import { asyncResponse } from "../common/util";
 
 @Route("categorias")
 @Tags("Categorias")
@@ -18,7 +19,7 @@ import { CategoriaService, CategoriaType } from ".";
 export class CategoriaController extends Controller {
   @Get()
   public async listar(): Promise<CategoriaType[]> {
-    return new CategoriaService().listar();
+    return await asyncResponse(new CategoriaService().listar());
   }
 
   @SuccessResponse("201", "Created")
@@ -27,12 +28,12 @@ export class CategoriaController extends Controller {
     @Body() requestBody: CategoriaType
   ): Promise<CategoriaType> {
     this.setStatus(201);
-    return new CategoriaService().criar(requestBody);
+    return await asyncResponse(new CategoriaService().criar(requestBody));
   }
 
   @SuccessResponse("200", "Ok")
   @Delete("{id}")
   public async excluir(@Path() id: string): Promise<string> {
-    return new CategoriaService().excluir(id);
+    return await asyncResponse(new CategoriaService().excluir(id));
   }
 }
