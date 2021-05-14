@@ -25,20 +25,10 @@ export class PostController extends Controller {
     @Query() pagina = 0,
     @Query() tamanho = 5,
     @Query() categoria?: string
-  ): Promise<PostType[]> {
-    let posts: PostsPage;
-
-    if (!categoria) {
-      posts = new PostService().listarPaginado(pagina, tamanho);
-    } else {
-      posts = new PostService().listarPorCategoriaPaginado(
-        categoria,
-        pagina,
-        tamanho
-      );
-    }
-
-    return await asyncResponse(posts);
+  ): Promise<PostsPage> {
+    return await asyncResponse(
+      new PostService().listarPaginado(pagina, tamanho, categoria)
+    );
   }
 
   @SuccessResponse("201", "Created")
