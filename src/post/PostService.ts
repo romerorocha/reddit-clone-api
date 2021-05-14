@@ -1,4 +1,4 @@
-import { PostParams, PostRepository, PostType } from ".";
+import { PostParams, PostRepository, PostsPage, PostType } from ".";
 import { ComentarioRepository } from "../comentario";
 import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
 import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
@@ -22,6 +22,36 @@ export default class PostService {
     return this.repository
       .listar()
       .filter((p) => p.categoria === pathCategoria);
+  }
+
+  private getPagina(
+    pagina: number,
+    tamanho: number,
+    posts: PostType[]
+  ): PostsPage {
+    const inicio = pagina * tamanho;
+    const fim = inicio + tamanho;
+
+    return {
+      posts: posts.slice(inicio, fim),
+      pagina,
+      tamanho: tamanho,
+      total: posts.length,
+    };
+  }
+
+  public listarPaginado(pagina: number, tamanho: number): PostsPage {
+    const posts = this.repository.listar();
+    return this.getPagina(pagina, tamanho, posts);
+  }
+
+  public listarPorCategoriaPaginado(
+    pathCategoria: string,
+    pagina: number,
+    tamanho: number
+  ): PostsPage {
+    const posts = this.listarPorCategoria(pathCategoria);
+    return this.getPagina(pagina, tamanho, posts);
   }
 
   public obterPorId = (id: string): PostType => {

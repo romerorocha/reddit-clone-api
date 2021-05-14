@@ -12,7 +12,7 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
-import { PostParams, PostService, PostType } from ".";
+import { PostParams, PostService, PostsPage, PostType } from ".";
 import { Voto } from "../voto";
 import { asyncResponse } from "../common/util";
 
@@ -21,13 +21,21 @@ import { asyncResponse } from "../common/util";
 @Security("bearerAuth")
 export class PostController extends Controller {
   @Get()
-  public async listar(@Query() categoria?: string): Promise<PostType[]> {
-    let posts: PostType[];
+  public async listar(
+    @Query() pagina = 0,
+    @Query() tamanho = 5,
+    @Query() categoria?: string
+  ): Promise<PostType[]> {
+    let posts: PostsPage;
 
     if (!categoria) {
-      posts = new PostService().listar();
+      posts = new PostService().listarPaginado(pagina, tamanho);
     } else {
-      posts = new PostService().listarPorCategoria(categoria);
+      posts = new PostService().listarPorCategoriaPaginado(
+        categoria,
+        pagina,
+        tamanho
+      );
     }
 
     return await asyncResponse(posts);
