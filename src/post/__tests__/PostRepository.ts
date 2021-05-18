@@ -1,5 +1,4 @@
-import { PostRepository } from "..";
-import { resetPostsDB } from "../PostRepository";
+import { resetPostsDB, PostRepository } from "../PostRepository";
 
 const repository = new PostRepository();
 

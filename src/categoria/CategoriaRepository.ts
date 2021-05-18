@@ -16,7 +16,7 @@ export const resetCategoriasDB = () => {
   categorias = clone(init);
 };
 
-export default class CategoriaRepository {
+export class CategoriaRepository {
   public obter(path: string): CategoriaType {
     return categorias[path];
   }

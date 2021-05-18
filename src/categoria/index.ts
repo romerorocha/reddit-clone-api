@@ -1,13 +1,11 @@
-import CategoriaRepository from "./CategoriaRepository";
-import CategoriaService from "./CategoriaService";
+export { CategoriaRepository } from "./CategoriaRepository";
+export { CategoriaService } from "./CategoriaService";
 
-type CategoriaType = {
+export type CategoriaType = {
   path: string;
   nome: string;
 };
 
-type CategoriasType = {
+export type CategoriasType = {
   [key: string]: CategoriaType;
 };
-
-export { CategoriaType, CategoriasType, CategoriaService, CategoriaRepository };

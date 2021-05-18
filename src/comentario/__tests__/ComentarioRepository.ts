@@ -1,5 +1,8 @@
-import { ComentarioRepository, ComentarioType } from "..";
-import { resetComentariosDB } from "../ComentarioRepository";
+import { ComentarioType } from "..";
+import {
+  resetComentariosDB,
+  ComentarioRepository,
+} from "../ComentarioRepository";
 
 const repository = new ComentarioRepository();
 

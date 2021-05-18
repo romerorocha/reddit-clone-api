@@ -7,7 +7,7 @@ import {
 import { validarCamposObrigatorios } from "../common/validadores";
 import { PostService } from "../post";
 
-export default class CategoriaService {
+export class CategoriaService {
   readonly repository = new CategoriaRepository();
   readonly postService = new PostService();
 

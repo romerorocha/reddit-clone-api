@@ -5,7 +5,7 @@ import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
 import { validarCamposObrigatorios } from "../common/validadores";
 import { OpcaoVoto, Voto } from "../voto";
 
-export default class PostService {
+export class PostService {
   readonly repository: PostRepository;
   readonly comentarioRepository: ComentarioRepository;
 

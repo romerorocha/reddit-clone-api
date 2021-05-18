@@ -40,7 +40,7 @@ export const resetComentariosDB = () => {
   comentarios = clone(init);
 };
 
-export default class ComentarioRepository {
+export class ComentarioRepository {
   public obter(id: string): any {
     let comentario;
 

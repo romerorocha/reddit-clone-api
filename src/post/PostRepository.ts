@@ -42,7 +42,7 @@ export const resetPostsDB = () => {
   posts = clone(init);
 };
 
-export default class PostRepository {
+export class PostRepository {
   public listar(): PostType[] {
     return Object.values(posts);
   }

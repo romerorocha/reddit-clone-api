@@ -1,7 +1,7 @@
 import { spy, verify, when } from "ts-mockito";
 import { CategoriaRepository } from "..";
 import { PostService } from "../../post";
-import CategoriaService from "../CategoriaService";
+import { CategoriaService } from "../CategoriaService";
 
 let service: CategoriaService;
 let repositorySpy: CategoriaRepository;

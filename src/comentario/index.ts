@@ -1,7 +1,7 @@
-import ComentarioRepository from "./ComentarioRepository";
-import ComentarioService from "./ComentarioService";
+export { ComentarioRepository } from "./ComentarioRepository";
+export { ComentarioService } from "./ComentarioService";
 
-type ComentarioType = {
+export type ComentarioType = {
   id?: string;
   idPai: string;
   timestamp: number;
@@ -10,20 +10,10 @@ type ComentarioType = {
   nota: number;
 };
 
-type ComentarioIndexado = {
-  [key: string]: ComentarioType;
+export type ComentariosType = {
+  [key: string]: {
+    [key: string]: ComentarioType;
+  };
 };
 
-type ComentariosType = {
-  [key: string]: ComentarioIndexado;
-};
-
-type ComentarioParams = Pick<ComentarioType, "autor" | "corpo">;
-
-export {
-  ComentarioType,
-  ComentariosType,
-  ComentarioParams,
-  ComentarioService,
-  ComentarioRepository,
-};
+export type ComentarioParams = Pick<ComentarioType, "autor" | "corpo">;

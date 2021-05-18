@@ -1,4 +1,4 @@
-import CategoriaRepository, { resetCategoriasDB } from "../CategoriaRepository";
+import { CategoriaRepository, resetCategoriasDB } from "../CategoriaRepository";
 
 const repository = new CategoriaRepository();
 
