@@ -2,7 +2,7 @@
 
 ## Instalação e Execução
 Recomenda-se o uso da ferramenta **yarn**, mas **npm** pode ser usado como alternativa sem maiores prejuízos.
-Aplicação desenvolvida e testada com **NodeJS v14.15.1**
+Aplicação desenvolvida com **NodeJS v14.x.x**
 
 Para instalar as dependências do projeto
 ```sh
@@ -33,8 +33,7 @@ Documentação da API disponível em `http://localhost:5000/api-docs`.
 
 ### Autenticação
 > "Fale amigo, e entre!"
-
-Necessário fornecer um *Header* `Authorization`, contendo a senha `mellon`, apenas para simular uma autenticação real.
+Para consumir a API, se faz necessário a definição de um *Header* `Authorization` nos *requests*, contendo a senha `mellon`. O intuito é simular uma autenticação real.
 ```
 Authorization: mellon
 ```
