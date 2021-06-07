@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     /* Basic Options */
+    "baseUrl": "src",
     "incremental": true,
     "target": "es6",
     "module": "commonjs",
@@ -9,13 +10,6 @@
 
     /* Strict Type-Checking Options */
     "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
 
     /* Additional Checks */
     "noUnusedLocals": true,
@@ -34,5 +28,6 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["**/*/__tests__"]
+  "include": ["src"],
+  "exclude": ["src/**/*/__tests__"]
 }

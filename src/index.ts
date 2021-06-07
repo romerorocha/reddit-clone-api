@@ -2,10 +2,13 @@ import cors from "cors";
 import "dotenv/config";
 import express from "express";
 import swaggerUi from "swagger-ui-express";
+
 import { RegisterRoutes } from "../api-docs/routes";
-import { WELCOME_TO_MORIA } from "./common/mensagens";
-import { docsHandler } from "./middleware/docs";
-import { errorHandler, logErrors } from "./middleware/erros";
+
+import { WELCOME_TO_MORIA } from "common/mensagens";
+
+import { docsHandler } from "middleware/docs";
+import { errorHandler, logErrors } from "middleware/erros";
 
 const app = express();
 

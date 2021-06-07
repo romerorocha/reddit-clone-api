@@ -1,5 +1,5 @@
 import * as express from "express";
-import { ErroAutorizacao } from "../common/erros";
+import { ErroAutorizacao } from "common/erros";
 
 export function expressAuthentication(
   request: express.Request,

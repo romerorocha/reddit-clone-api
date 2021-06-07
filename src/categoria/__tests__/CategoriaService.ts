@@ -1,5 +1,6 @@
 import { spy, verify, when } from "ts-mockito";
 import { CategoriaRepository } from "..";
+
 import { PostService } from "../../post";
 import { CategoriaService } from "../CategoriaService";
 

@@ -1,5 +1,6 @@
 import clone from "clone";
 import { v1 as uuidv1 } from "uuid";
+
 import { PostType, PostsType } from ".";
 
 const init: PostsType = {

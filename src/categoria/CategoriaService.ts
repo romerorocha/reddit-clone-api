@@ -1,11 +1,13 @@
 import { CategoriaRepository, CategoriaType } from ".";
-import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
+
+import { PostService } from "post";
+
+import { ErroRegistroInexistente, ErroValidacao } from "common/erros";
 import {
   ERRO_CATEGORIA_JA_EXISTE,
   ERRO_CATEGORIA_POSSUI_POSTS,
-} from "../common/mensagens";
-import { validarCamposObrigatorios } from "../common/validadores";
-import { PostService } from "../post";
+} from "common/mensagens";
+import { validarCamposObrigatorios } from "common/validadores";
 
 export class CategoriaService {
   readonly repository = new CategoriaRepository();

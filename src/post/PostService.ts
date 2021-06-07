@@ -1,9 +1,9 @@
 import { PostParams, PostRepository, PostsPage, PostType } from ".";
-import { ComentarioRepository } from "../comentario";
-import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
-import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
-import { validarCamposObrigatorios } from "../common/validadores";
-import { OpcaoVoto, Voto } from "../voto";
+import { ComentarioRepository } from "comentario";
+import { ErroRegistroInexistente, ErroValidacao } from "common/erros";
+import { ERRO_VOTO_INVALIDO } from "common/mensagens";
+import { validarCamposObrigatorios } from "common/validadores";
+import { OpcaoVoto, Voto } from "voto";
 
 export class PostService {
   readonly repository: PostRepository;

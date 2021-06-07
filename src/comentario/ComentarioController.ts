@@ -11,9 +11,11 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
+
 import { ComentarioParams, ComentarioService, ComentarioType } from ".";
-import { Voto } from "../voto";
-import { asyncResponse } from "../common/util";
+
+import { Voto } from "voto";
+import { asyncResponse } from "common/util";
 
 @Route("comentarios")
 @Tags("Comentários")

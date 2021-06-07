@@ -13,8 +13,8 @@ import {
   Tags,
 } from "tsoa";
 import { PostParams, PostService, PostsPage, PostType } from ".";
-import { Voto } from "../voto";
-import { asyncResponse } from "../common/util";
+import { Voto } from "voto";
+import { asyncResponse } from "common/util";
 
 @Route("posts")
 @Tags("Posts")

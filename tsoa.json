@@ -12,5 +12,8 @@
   "routes": {
     "routesDir": "./api-docs",
     "authenticationModule": "src/middleware/autenticacao.ts"
+  },
+  "compilerOptions": {
+    "baseUrl": "src"
   }
 }

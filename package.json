@@ -10,13 +10,13 @@
   },
   "scripts": {
     "clean": "rimraf build/* && rimraf api-docs/*",
-    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
+    "dev": "concurrently \"NODE_PATH=build/src nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "test": "jest --watch",
     "test:ci": "jest",
     "coverage": "jest --coverage",
     "prebuild": "rimraf build/* && rimraf api-docs/*",
     "build": "tsoa spec-and-routes && tsc",
-    "start": "node build/src/index.js",
+    "start": "NODE_PATH=build/src node build/src/index.js",
     "start:production": "NODE_ENV=production node build/src/index.js"
   },
   "devDependencies": {

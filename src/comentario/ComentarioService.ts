@@ -1,9 +1,11 @@
 import { ComentarioParams, ComentarioRepository, ComentarioType } from ".";
-import { ErroRegistroInexistente, ErroValidacao } from "../common/erros";
-import { ERRO_VOTO_INVALIDO } from "../common/mensagens";
-import { validarCamposObrigatorios } from "../common/validadores";
+
+import { ErroRegistroInexistente, ErroValidacao } from "common/erros";
+import { ERRO_VOTO_INVALIDO } from "common/mensagens";
+import { validarCamposObrigatorios } from "common/validadores";
+import { OpcaoVoto, Voto } from "voto";
+
 import { PostService } from "../post";
-import { OpcaoVoto, Voto } from "../voto";
 
 export class ComentarioService {
   private obterOuLancarExcecao(id: string): ComentarioType {

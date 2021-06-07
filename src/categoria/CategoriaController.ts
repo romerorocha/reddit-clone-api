@@ -10,8 +10,10 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
+
 import { CategoriaService, CategoriaType } from ".";
-import { asyncResponse } from "../common/util";
+
+import { asyncResponse } from "common/util";
 
 @Route("categorias")
 @Tags("Categorias")
