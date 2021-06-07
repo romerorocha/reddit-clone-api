@@ -1,8 +1,8 @@
 # Forum API Server
+API de aplicação de fórum, estilo Reddit, utilizada para apoiar o ensino de desenvolvimento web com ReactJS
 
 ## Instalação e Execução
-Recomenda-se o uso da ferramenta **yarn**, mas **npm** pode ser usado como alternativa sem maiores prejuízos.
-Aplicação desenvolvida com **NodeJS v14.x.x**
+Aplicação desenvolvida com **NodeJS v14.x.x** e **Yarn 1.22.x**
 
 Para instalar as dependências do projeto
 ```sh
