@@ -1,8 +1,6 @@
 import { PostParams, PostRepository, PostsPage, PostType } from ".";
 import { ComentarioRepository } from "comentario";
-import { ErroRegistroInexistente, ErroValidacao } from "common/erros";
-import { ERRO_VOTO_INVALIDO } from "common/mensagens";
-import { validarCamposObrigatorios } from "common/validadores";
+import { ErroRegistroInexistente } from "common/erros";
 import { OpcaoVoto, Voto } from "voto";
 
 export class PostService {
@@ -29,7 +27,7 @@ export class PostService {
     tamanho: number,
     pathCategoria?: string
   ): PostsPage {
-    const posts = !!pathCategoria
+    const posts = pathCategoria
       ? this.listarPorCategoria(pathCategoria)
       : this.listar();
 
@@ -52,13 +50,7 @@ export class PostService {
     return post;
   };
 
-  public validarExistenciaPost = (id: string) => {
-    this.obterPorId(id);
-  };
-
   public criar = (post: PostParams): PostType => {
-    validarCamposObrigatorios(post);
-
     const novoPost = {
       ...post,
       timestamp: Date.now(),
@@ -70,8 +62,6 @@ export class PostService {
   };
 
   public atualizar = (id: string, post: PostParams): PostType => {
-    validarCamposObrigatorios({ id, ...post });
-
     const postExistente = this.repository.obterPorId(id);
     if (!postExistente || !postExistente.id) {
       throw new ErroRegistroInexistente(id);
@@ -81,12 +71,6 @@ export class PostService {
   };
 
   public votar = (id: string, voto: Voto): PostType => {
-    validarCamposObrigatorios(id);
-
-    if (!Object.keys(OpcaoVoto).includes(voto.opcao)) {
-      throw new ErroValidacao(ERRO_VOTO_INVALIDO);
-    }
-
     const post = this.repository.obterPorId(id);
     if (!post?.id) {
       throw new ErroRegistroInexistente(id);
@@ -97,8 +81,7 @@ export class PostService {
   };
 
   public excluir = (id: string): string => {
-    validarCamposObrigatorios(id);
-    this.validarExistenciaPost(id);
+    this.obterPorId(id);
     this.comentarioRepository.excluirPorPai(id);
     return this.repository.excluir(id);
   };

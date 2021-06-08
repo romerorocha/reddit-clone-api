@@ -25,7 +25,7 @@ export class ComentarioService {
     validarCamposObrigatorios(comentario);
 
     const postService = new PostService();
-    postService.validarExistenciaPost(idPai);
+    postService.obterPorId(idPai);
 
     postService.atualizarContadorComentarios(idPai, 1);
 
