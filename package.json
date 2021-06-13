@@ -10,7 +10,7 @@
   },
   "scripts": {
     "clean": "rimraf build/* && rimraf api-docs/*",
-    "dev": "concurrently \"NODE_PATH=build/src nodemon\" \"nodemon -x tsoa spec-and-routes\"",
+    "dev": "concurrently \"nodemon\" \"nodemon -x tsoa spec-and-routes\"",
     "test": "jest --watch",
     "test:ci": "jest",
     "coverage": "jest --coverage",
@@ -38,6 +38,7 @@
     "ts-jest": "^26.5.6",
     "ts-mockito": "^2.6.1",
     "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.3.2"
   },
   "dependencies": {
