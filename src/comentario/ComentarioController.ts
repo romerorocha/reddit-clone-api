@@ -15,56 +15,49 @@ import {
 import { ComentarioParams, ComentarioService, ComentarioType } from ".";
 
 import { Voto } from "voto";
-import { asyncResponse } from "common/util";
 
 @Route("comentarios")
 @Tags("Comentários")
 @Security("bearerAuth")
 export class ComentarioController extends Controller {
   @Get("{idPai}")
-  public async listar(@Path() idPai: string): Promise<ComentarioType[]> {
-    return await asyncResponse(new ComentarioService().listar(idPai));
+  public listar(@Path() idPai: string): ComentarioType[] {
+    return new ComentarioService().listar(idPai);
   }
 
   @SuccessResponse("201", "Created")
   @Post("{idPai}")
-  public async criar(
+  public criar(
     @Path() idPai: string,
     @Body() requestBody: ComentarioParams
-  ): Promise<ComentarioType> {
+  ): ComentarioType {
     this.setStatus(201);
-    return await asyncResponse(
-      new ComentarioService().criar(idPai, requestBody)
-    );
+    return new ComentarioService().criar(idPai, requestBody);
   }
 
   @SuccessResponse("200", "Ok")
   @Put("{idComentario}")
-  public async atualizar(
+  public atualizar(
     @Path() idComentario: string,
     @Body() requestBody: ComentarioParams
-  ): Promise<ComentarioType> {
+  ): ComentarioType {
     this.setStatus(200);
-    return await asyncResponse(
-      new ComentarioService().atualizar(idComentario, requestBody)
-    );
+    return new ComentarioService().atualizar(idComentario, requestBody);
   }
 
   @SuccessResponse("200", "Ok")
   @Put("{idComentario}/votar")
-  public async votar(
+  public votar(
     @Path() idComentario: string,
     @Body() requestBody: Voto
-  ): Promise<ComentarioType> {
+  ): ComentarioType {
     this.setStatus(200);
-    return await asyncResponse(
-      new ComentarioService().votar(idComentario, requestBody)
-    );
+    return new ComentarioService().votar(idComentario, requestBody);
   }
 
   @SuccessResponse("200", "Ok")
   @Delete("{idComentario}")
-  public async excluir(@Path() idComentario: string): Promise<string> {
-    return await asyncResponse(new ComentarioService().excluir(idComentario));
+  public excluir(@Path() idComentario: string): string {
+    return new ComentarioService().excluir(idComentario);
   }
 }

@@ -8,7 +8,8 @@ import { RegisterRoutes } from "../api-docs/routes";
 import { WELCOME_TO_MORIA } from "common/mensagens";
 
 import { docsHandler } from "middleware/docs";
-import { errorHandler, logErrors } from "middleware/erros";
+import { errorHandler, logErrors } from "middleware/error";
+import { delay } from "middleware/delay";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api-docs", swaggerUi.serve, docsHandler);
+app.use(delay);
 
 RegisterRoutes(app);
 

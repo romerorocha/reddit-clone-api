@@ -14,61 +14,53 @@ import {
 } from "tsoa";
 import { PostParams, PostService, PostsPage, PostType } from ".";
 import { Voto } from "voto";
-import { asyncResponse } from "common/util";
 
 @Route("posts")
 @Tags("Posts")
 @Security("bearerAuth")
 export class PostController extends Controller {
   @Get()
-  public async listar(
+  public listar(
     @Query() pagina = 0,
     @Query() tamanho = 5,
     @Query() categoria?: string
-  ): Promise<PostsPage> {
-    return await asyncResponse(
-      new PostService().listarPaginado(pagina, tamanho, categoria)
-    );
+  ): PostsPage {
+    return new PostService().listarPaginado(pagina, tamanho, categoria);
   }
 
   @SuccessResponse("201", "Created")
   @Post()
-  public async criar(@Body() requestBody: PostParams): Promise<PostType> {
+  public criar(@Body() requestBody: PostParams): PostType {
     this.setStatus(201);
-    return await asyncResponse(new PostService().criar(requestBody));
+    return new PostService().criar(requestBody);
   }
 
   @Get("{idPost}")
-  public async obterPorId(@Path() idPost: string): Promise<PostType> {
+  public obterPorId(@Path() idPost: string): PostType {
     this.setStatus(200);
-    return await asyncResponse(new PostService().obterPorId(idPost));
+    return new PostService().obterPorId(idPost);
   }
 
   @SuccessResponse("200", "Ok")
   @Put("{idPost}")
-  public async atualizar(
+  public atualizar(
     @Path() idPost: string,
     @Body() requestBody: PostParams
-  ): Promise<PostType> {
+  ): PostType {
     this.setStatus(200);
-    return await asyncResponse(
-      new PostService().atualizar(idPost, requestBody)
-    );
+    return new PostService().atualizar(idPost, requestBody);
   }
 
   @SuccessResponse("200", "Ok")
   @Put("{idPost}/votar")
-  public async votar(
-    @Path() idPost: string,
-    @Body() requestBody: Voto
-  ): Promise<PostType> {
+  public votar(@Path() idPost: string, @Body() requestBody: Voto): PostType {
     this.setStatus(200);
-    return await asyncResponse(new PostService().votar(idPost, requestBody));
+    return new PostService().votar(idPost, requestBody);
   }
 
   @SuccessResponse("200", "Ok")
   @Delete("{idPost}")
-  public async excluir(@Path() idPost: string): Promise<string> {
-    return await asyncResponse(new PostService().excluir(idPost));
+  public excluir(@Path() idPost: string): string {
+    return new PostService().excluir(idPost);
   }
 }
