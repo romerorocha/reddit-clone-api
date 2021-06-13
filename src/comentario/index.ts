@@ -1,7 +1,7 @@
 export { ComentarioRepository } from "./ComentarioRepository";
 export { ComentarioService } from "./ComentarioService";
 
-export type ComentarioType = {
+export type Comentario = {
   id?: string;
   idPai: string;
   timestamp: number;
@@ -12,8 +12,8 @@ export type ComentarioType = {
 
 export type ComentariosType = {
   [key: string]: {
-    [key: string]: ComentarioType;
+    [key: string]: Comentario;
   };
 };
 
-export type ComentarioParams = Pick<ComentarioType, "autor" | "corpo">;
+export type ComentarioParams = Pick<Comentario, "autor" | "corpo">;

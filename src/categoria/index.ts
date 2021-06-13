@@ -1,11 +1,11 @@
 export { CategoriaRepository } from "./CategoriaRepository";
 export { CategoriaService } from "./CategoriaService";
 
-export type CategoriaType = {
+export type Categoria = {
   path: string;
   nome: string;
 };
 
 export type CategoriasType = {
-  [key: string]: CategoriaType;
+  [key: string]: Categoria;
 };

@@ -1,7 +1,7 @@
 export { PostService } from "./PostService";
 export { PostRepository } from "./PostRepository";
 
-export type PostType = {
+export type UserPost = {
   id?: string;
   titulo: string;
   corpo: string;
@@ -12,18 +12,18 @@ export type PostType = {
   numeroComentarios: number;
 };
 
-export type PostsType = {
-  [key: string]: PostType;
+export type Posts = {
+  [key: string]: UserPost;
 };
 
 export type PostsPage = {
-  posts: PostType[];
+  posts: UserPost[];
   pagina: number;
   tamanho: number;
   total: number;
 };
 
 export type PostParams = Pick<
-  PostType,
+  UserPost,
   "titulo" | "corpo" | "autor" | "categoria"
 >;

@@ -1,6 +1,6 @@
 import { ErroRegistroInexistente } from "common/erros";
 import { spy, when, deepEqual, verify, notNull } from "ts-mockito";
-import { OpcaoVoto } from "voto";
+import { OpcaoVoto } from "common/types";
 import { PostRepository, PostService } from "..";
 import { ComentarioRepository } from "../../comentario";
 

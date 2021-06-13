@@ -1,4 +1,4 @@
-import { ComentarioType, ComentariosType } from ".";
+import { Comentario, ComentariosType } from ".";
 import { v1 as uuidv1 } from "uuid";
 import clone from "clone";
 
@@ -54,7 +54,7 @@ export class ComentarioRepository {
     return comentario;
   }
 
-  public listar(idPai: string): ComentarioType[] {
+  public listar(idPai: string): Comentario[] {
     if (!idPai || !comentarios[idPai]) {
       return [];
     }
@@ -62,7 +62,7 @@ export class ComentarioRepository {
     return Object.values(comentarios[idPai]);
   }
 
-  public salvar = (comentario: ComentarioType): any => {
+  public salvar = (comentario: Comentario): any => {
     let { id, idPai } = comentario;
 
     if (!idPai) {

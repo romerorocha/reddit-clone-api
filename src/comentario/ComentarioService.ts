@@ -1,14 +1,14 @@
-import { ComentarioParams, ComentarioRepository, ComentarioType } from ".";
+import { ComentarioParams, ComentarioRepository, Comentario } from ".";
 
 import { ErroRegistroInexistente, ErroValidacao } from "common/erros";
 import { ERRO_VOTO_INVALIDO } from "common/mensagens";
 import { validarCamposObrigatorios } from "common/validadores";
-import { OpcaoVoto, Voto } from "voto";
+import { OpcaoVoto, Voto } from "common/types";
 
-import { PostService } from "../post";
+import { PostService } from "post";
 
 export class ComentarioService {
-  private obterOuLancarExcecao(id: string): ComentarioType {
+  private obterOuLancarExcecao(id: string): Comentario {
     const comentario = new ComentarioRepository().obter(id);
     if (!comentario || !comentario.id) {
       throw new ErroRegistroInexistente(id);
@@ -16,7 +16,7 @@ export class ComentarioService {
     return comentario;
   }
 
-  public listar(idPai: string): ComentarioType[] {
+  public listar(idPai: string): Comentario[] {
     validarCamposObrigatorios(idPai);
     return new ComentarioRepository().listar(idPai);
   }

@@ -12,16 +12,16 @@ import {
   Tags,
 } from "tsoa";
 
-import { ComentarioParams, ComentarioService, ComentarioType } from ".";
+import { ComentarioParams, ComentarioService, Comentario } from ".";
 
-import { Voto } from "voto";
+import { Voto } from "common/types";
 
 @Route("comentarios")
 @Tags("Comentários")
 @Security("bearerAuth")
 export class ComentarioController extends Controller {
   @Get("{idPai}")
-  public listar(@Path() idPai: string): ComentarioType[] {
+  public listar(@Path() idPai: string): Comentario[] {
     return new ComentarioService().listar(idPai);
   }
 
@@ -30,7 +30,7 @@ export class ComentarioController extends Controller {
   public criar(
     @Path() idPai: string,
     @Body() requestBody: ComentarioParams
-  ): ComentarioType {
+  ): Comentario {
     this.setStatus(201);
     return new ComentarioService().criar(idPai, requestBody);
   }
@@ -40,7 +40,7 @@ export class ComentarioController extends Controller {
   public atualizar(
     @Path() idComentario: string,
     @Body() requestBody: ComentarioParams
-  ): ComentarioType {
+  ): Comentario {
     this.setStatus(200);
     return new ComentarioService().atualizar(idComentario, requestBody);
   }
@@ -50,7 +50,7 @@ export class ComentarioController extends Controller {
   public votar(
     @Path() idComentario: string,
     @Body() requestBody: Voto
-  ): ComentarioType {
+  ): Comentario {
     this.setStatus(200);
     return new ComentarioService().votar(idComentario, requestBody);
   }

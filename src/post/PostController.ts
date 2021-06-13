@@ -12,8 +12,9 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
-import { PostParams, PostService, PostsPage, PostType } from ".";
-import { Voto } from "voto";
+
+import { PostParams, PostService, PostsPage, UserPost } from ".";
+import { Voto } from "common/types";
 
 @Route("posts")
 @Tags("Posts")
@@ -30,13 +31,13 @@ export class PostController extends Controller {
 
   @SuccessResponse("201", "Created")
   @Post()
-  public criar(@Body() requestBody: PostParams): PostType {
+  public criar(@Body() requestBody: PostParams): UserPost {
     this.setStatus(201);
     return new PostService().criar(requestBody);
   }
 
   @Get("{idPost}")
-  public obterPorId(@Path() idPost: string): PostType {
+  public obterPorId(@Path() idPost: string): UserPost {
     this.setStatus(200);
     return new PostService().obterPorId(idPost);
   }
@@ -46,14 +47,14 @@ export class PostController extends Controller {
   public atualizar(
     @Path() idPost: string,
     @Body() requestBody: PostParams
-  ): PostType {
+  ): UserPost {
     this.setStatus(200);
     return new PostService().atualizar(idPost, requestBody);
   }
 
   @SuccessResponse("200", "Ok")
   @Put("{idPost}/votar")
-  public votar(@Path() idPost: string, @Body() requestBody: Voto): PostType {
+  public votar(@Path() idPost: string, @Body() requestBody: Voto): UserPost {
     this.setStatus(200);
     return new PostService().votar(idPost, requestBody);
   }

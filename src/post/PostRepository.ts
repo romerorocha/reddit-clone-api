@@ -1,9 +1,9 @@
 import clone from "clone";
 import { v1 as uuidv1 } from "uuid";
 
-import { PostType, PostsType } from ".";
+import { UserPost, Posts } from ".";
 
-const init: PostsType = {
+const init: Posts = {
   "e49bc914-a8f2-11eb-bcbc-0242ac130002": {
     id: "e49bc914-a8f2-11eb-bcbc-0242ac130002",
     timestamp: 1619704748161,
@@ -44,7 +44,7 @@ export const resetPostsDB = () => {
 };
 
 export class PostRepository {
-  public listar(): PostType[] {
+  public listar(): UserPost[] {
     return Object.values(posts);
   }
 
@@ -52,7 +52,7 @@ export class PostRepository {
     return posts[id];
   };
 
-  public salvar = (post: PostType): PostType => {
+  public salvar = (post: UserPost): UserPost => {
     const id = post.id ?? uuidv1();
     posts[id] = { ...post, id };
     return posts[id];

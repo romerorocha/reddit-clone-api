@@ -1,7 +1,9 @@
-import { PostParams, PostRepository, PostsPage, PostType } from ".";
+import { PostParams, PostRepository, PostsPage, UserPost } from ".";
+
 import { ComentarioRepository } from "comentario";
+
 import { ErroRegistroInexistente } from "common/erros";
-import { OpcaoVoto, Voto } from "voto";
+import { OpcaoVoto, Voto } from "common/types";
 
 export class PostService {
   readonly repository: PostRepository;
@@ -12,11 +14,11 @@ export class PostService {
     this.comentarioRepository = new ComentarioRepository();
   }
 
-  public listar(): PostType[] {
+  public listar(): UserPost[] {
     return this.repository.listar();
   }
 
-  public listarPorCategoria(pathCategoria: string): PostType[] {
+  public listarPorCategoria(pathCategoria: string): UserPost[] {
     return this.repository
       .listar()
       .filter((p) => p.categoria === pathCategoria);
@@ -42,7 +44,7 @@ export class PostService {
     };
   }
 
-  public obterPorId = (id: string): PostType => {
+  public obterPorId = (id: string): UserPost => {
     const post = this.repository.obterPorId(id);
     if (!post) {
       throw new ErroRegistroInexistente(id);
@@ -50,7 +52,7 @@ export class PostService {
     return post;
   };
 
-  public criar = (post: PostParams): PostType => {
+  public criar = (post: PostParams): UserPost => {
     const novoPost = {
       ...post,
       timestamp: Date.now(),
@@ -61,7 +63,7 @@ export class PostService {
     return this.repository.salvar(novoPost);
   };
 
-  public atualizar = (id: string, post: PostParams): PostType => {
+  public atualizar = (id: string, post: PostParams): UserPost => {
     const postExistente = this.repository.obterPorId(id);
     if (!postExistente || !postExistente.id) {
       throw new ErroRegistroInexistente(id);
@@ -70,7 +72,7 @@ export class PostService {
     return this.repository.salvar({ ...postExistente, ...post });
   };
 
-  public votar = (id: string, voto: Voto): PostType => {
+  public votar = (id: string, voto: Voto): UserPost => {
     const post = this.repository.obterPorId(id);
     if (!post?.id) {
       throw new ErroRegistroInexistente(id);

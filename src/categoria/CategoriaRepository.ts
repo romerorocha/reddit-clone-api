@@ -1,4 +1,4 @@
-import { CategoriaType, CategoriasType } from ".";
+import { Categoria, CategoriasType } from ".";
 import clone from "clone";
 
 const init: CategoriasType = {
@@ -17,15 +17,15 @@ export const resetCategoriasDB = () => {
 };
 
 export class CategoriaRepository {
-  public obter(path: string): CategoriaType {
+  public obter(path: string): Categoria {
     return categorias[path];
   }
 
-  public listar(): CategoriaType[] {
+  public listar(): Categoria[] {
     return Object.values(categorias);
   }
 
-  public salvar(categoria: CategoriaType): CategoriaType {
+  public salvar(categoria: Categoria): Categoria {
     const { path } = categoria;
     if (path) {
       categorias[path] = categoria;

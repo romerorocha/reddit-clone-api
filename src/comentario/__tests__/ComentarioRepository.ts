@@ -1,4 +1,4 @@
-import { ComentarioType } from "..";
+import { Comentario } from "..";
 import {
   resetComentariosDB,
   ComentarioRepository,
@@ -19,7 +19,7 @@ describe("Listar comentários", () => {
 });
 
 describe("Salvar comentário", () => {
-  const input: ComentarioType = {
+  const input: Comentario = {
     idPai: "e49bc914-a8f2-11eb-bcbc-0242ac130002",
     timestamp: 1619708549910,
     corpo: "corpo",
@@ -32,7 +32,7 @@ describe("Salvar comentário", () => {
   });
 
   it("Não salva, idPai inexistente", () => {
-    const inputInvalido: ComentarioType = { ...input, idPai: "" };
+    const inputInvalido: Comentario = { ...input, idPai: "" };
     expect(repository.salvar(inputInvalido).id).toBeUndefined();
   });
 
