@@ -2,14 +2,21 @@ import { ComentarioParams, ComentarioRepository, Comentario } from ".";
 
 import { ErroRegistroInexistente, ErroValidacao } from "common/erros";
 import { ERRO_VOTO_INVALIDO } from "common/mensagens";
-import { validarCamposObrigatorios } from "common/validadores";
 import { OpcaoVoto, Voto } from "common/types";
 
 import { PostService } from "post";
 
 export class ComentarioService {
-  private obterOuLancarExcecao(id: string): Comentario {
-    const comentario = new ComentarioRepository().obter(id);
+  readonly repository: ComentarioRepository;
+  readonly postService: PostService;
+
+  constructor() {
+    this.repository = new ComentarioRepository();
+    this.postService = new PostService();
+  }
+
+  private obterPorId(id: string): Comentario {
+    const comentario = this.repository.obter(id);
     if (!comentario || !comentario.id) {
       throw new ErroRegistroInexistente(id);
     }
@@ -17,19 +24,14 @@ export class ComentarioService {
   }
 
   public listar(idPai: string): Comentario[] {
-    validarCamposObrigatorios(idPai);
-    return new ComentarioRepository().listar(idPai);
+    return this.repository.listar(idPai);
   }
 
   public criar = (idPai: string, comentario: ComentarioParams) => {
-    validarCamposObrigatorios(comentario);
+    this.postService.obterPorId(idPai);
+    this.postService.atualizarContadorComentarios(idPai, 1);
 
-    const postService = new PostService();
-    postService.obterPorId(idPai);
-
-    postService.atualizarContadorComentarios(idPai, 1);
-
-    return new ComentarioRepository().salvar({
+    return this.repository.salvar({
       idPai,
       timestamp: Date.now(),
       corpo: comentario.corpo,
@@ -39,17 +41,15 @@ export class ComentarioService {
   };
 
   public atualizar = (id: string, comentario: ComentarioParams) => {
-    validarCamposObrigatorios({ id, ...comentario });
-    const comentarioExistente = this.obterOuLancarExcecao(id);
-    return new ComentarioRepository().salvar({
+    const comentarioExistente = this.obterPorId(id);
+    return this.repository.salvar({
       ...comentarioExistente,
       ...comentario,
     });
   };
 
   public votar = (id: string, voto: Voto) => {
-    validarCamposObrigatorios(id);
-    const comentario = this.obterOuLancarExcecao(id);
+    const comentario = this.obterPorId(id);
 
     switch (voto.opcao) {
       case OpcaoVoto.positivo:
@@ -62,13 +62,12 @@ export class ComentarioService {
         throw new ErroValidacao(ERRO_VOTO_INVALIDO);
     }
 
-    return new ComentarioRepository().salvar(comentario);
+    return this.repository.salvar(comentario);
   };
 
   public excluir = (id: string): string => {
-    validarCamposObrigatorios(id);
-    const comentario = this.obterOuLancarExcecao(id);
-    new PostService().atualizarContadorComentarios(comentario.idPai, -1);
-    return new ComentarioRepository().excluir(id);
+    const comentario = this.obterPorId(id);
+    this.postService.atualizarContadorComentarios(comentario.idPai, -1);
+    return this.repository.excluir(id);
   };
 }

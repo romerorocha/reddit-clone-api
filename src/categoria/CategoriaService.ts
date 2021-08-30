@@ -37,7 +37,6 @@ export class CategoriaService {
       throw new ErroRegistroInexistente(path);
     }
 
-    //TODO desacoplar postservice
     const posts = this.postService.listarPorCategoria(path);
     if (posts.length) {
       throw new ErroValidacao(ERRO_CATEGORIA_POSSUI_POSTS);

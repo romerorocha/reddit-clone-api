@@ -95,7 +95,7 @@ describe("Obter post", () => {
     expect(service.obterPorId(POST_ID)).toEqual(post);
   });
 
-  it("deveria obter por id não encontra post", () => {
+  it("deveria lançar erro quando não encontra post", () => {
     const id = "2";
     when(repositorySpy.obterPorId(id)).thenReturn(undefined);
     try {
