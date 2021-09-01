@@ -34,7 +34,7 @@ describe("Criar categoria", () => {
       service.criar({ path: "", nome: "nome" });
       fail();
     } catch (err) {
-      expect(err.message).toEqual("O campo 'path' é obrigatório.");
+      expect((err as Error).message).toEqual("O campo 'path' é obrigatório.");
     }
   });
 
@@ -43,7 +43,7 @@ describe("Criar categoria", () => {
       service.criar({ path: "path", nome: "" });
       fail();
     } catch (err) {
-      expect(err.message).toEqual("O campo 'nome' é obrigatório.");
+      expect((err as Error).message).toEqual("O campo 'nome' é obrigatório.");
     }
   });
 
@@ -54,7 +54,7 @@ describe("Criar categoria", () => {
       service.criar({ path: "sda", nome: "Senhor dos Anéis" });
       fail();
     } catch (error) {
-      expect(error.message).toEqual(
+      expect((error as Error).message).toEqual(
         "Já existe uma categoria com o 'path' informado."
       );
     }
@@ -87,7 +87,7 @@ describe("Excluir categoria", () => {
       service.excluir(path);
       fail();
     } catch (error) {
-      expect(error.message).toBe(
+      expect((error as Error).message).toBe(
         "A categoria possui posts que a refereciam, não é possível removê-la."
       );
     }
@@ -101,7 +101,7 @@ describe("Excluir categoria", () => {
       service.excluir(path);
       fail();
     } catch (error) {
-      expect(error.message).toBe("Registro 'sda2' não existe.");
+      expect((error as Error).message).toBe("Registro 'sda2' não existe.");
     }
     verify(postServiceSpy.excluir(path)).never();
   });

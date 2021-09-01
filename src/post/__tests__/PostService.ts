@@ -102,7 +102,7 @@ describe("Obter post", () => {
       service.obterPorId(id);
       fail();
     } catch (error) {
-      expect(error.message).toEqual("Registro '2' não existe.");
+      expect((error as Error).message).toEqual("Registro '2' não existe.");
     }
   });
 });
