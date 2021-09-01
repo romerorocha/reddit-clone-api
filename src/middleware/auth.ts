@@ -7,9 +7,9 @@ export function expressAuthentication(
   _: string[]
 ): Promise<any> {
   if (securityName === "bearerAuth") {
-    const token = request.headers.authorization?.replace("Bearer ", "");
-
-    if (token === "mellon") {
+    const token = request.headers.authorization?.replace("Bearer ", "") ?? "";
+    const key = process.env.AUTH_KEY ?? "";
+    if (token === key) {
       return Promise.resolve({
         id: 1,
         name: "Ring Bearer",

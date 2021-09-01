@@ -40,9 +40,10 @@ Documentação da API disponível em `http://localhost:5000/api-docs`.
 
 ### Autenticação
 
-> "Fale amigo, e entre!"
-Para consumir a API, se faz necessário a definição de um *Header* `Authorization` nos *requests*, contendo a senha `mellon`. O intuito é simular uma autenticação real.
+Para consumir a API, se faz necessário a definição de um *Header* `Authorization` nos *requests*, contendo a senha informada no arquivo `.env`. O intuito é simular uma autenticação real.
+
+Preencha a seguinte chave, no `.env` do projeto, com o valor que desejar usar para exigir autenticação:
 
 ```text
-Authorization: mellon
+AUTH_KEY=
 ```
