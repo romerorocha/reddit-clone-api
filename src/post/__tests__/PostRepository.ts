@@ -8,7 +8,7 @@ beforeEach(() => {
 
 describe("Listar posts", () => {
   it("Lista todos os posts", () => {
-    expect(repository.listar()).toHaveLength(3);
+    expect(repository.listar()).toHaveLength(8);
   });
 });
 
