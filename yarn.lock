@@ -814,10 +814,10 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.2.tgz#423c77877d0569db20e1fc80885ac4118314010e"
   integrity sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==
 
-"@tsoa/cli@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@tsoa/cli/-/cli-3.9.0.tgz#e6576993ce343cace3df20c6a348839527c70cd2"
-  integrity sha512-/i3QEARkpno3FiR0Pwu2ghiOjY+QBj7g8BlK1oI+/Um8smtE9MWEv3AFjc9rUzwl8OwY8xHkgkfHkArK/vEsYQ==
+"@tsoa/cli@^3.11.2":
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/@tsoa/cli/-/cli-3.11.2.tgz#93646e2067ee6b891fec0b14ac498785feaa350a"
+  integrity sha512-x03zee/0WNUOW3MGvKqaomSYLWePhCSdNTDQXtXSGqD1Q8PrC7fryLnescTyYWgM+blCULdAN9pkcA2ofeUMsw==
   dependencies:
     "@tsoa/runtime" "^3.9.0"
     deepmerge "^4.2.2"
@@ -4698,12 +4698,12 @@ tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tsoa@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/tsoa/-/tsoa-3.9.0.tgz#4f903643e0d68f6aa56a647ea754a86dc7358ba9"
-  integrity sha512-/08qN79vJ58EO4wvT+ssh1IOgZwUWP5/hKs475iPUI0DQ/TBR+71mAw/zwBP+LEgZYJW226R4QdOz3S7XG29MA==
+tsoa@^3.11.2:
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/tsoa/-/tsoa-3.11.2.tgz#3530c3412205a823b8ae55faa0ed2902f24cb5fe"
+  integrity sha512-T6R2Tv9srjASACg/wjdjfBzu8cG8O95PRxPXmoKV6cECFCprwoPnvrgYm17fEFS3ItSkKZO3Pi39HS0iwIQ4RQ==
   dependencies:
-    "@tsoa/cli" "^3.9.0"
+    "@tsoa/cli" "^3.11.2"
     "@tsoa/runtime" "^3.9.0"
 
 tsutils@^3.21.0:
