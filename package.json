@@ -32,7 +32,7 @@
     "@typescript-eslint/parser": "^4.30.0",
     "concurrently": "^6.2.1",
     "eslint": "^7.32.0",
-    "jest": "^27.1.0",
+    "jest": "^27.2.4",
     "nodemon": "^2.0.12",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.5",
