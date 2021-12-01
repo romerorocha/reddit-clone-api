@@ -30,7 +30,7 @@
     "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "concurrently": "^6.3.0",
+    "concurrently": "^6.4.0",
     "eslint": "^7.32.0",
     "jest": "^27.3.1",
     "nodemon": "^2.0.14",
