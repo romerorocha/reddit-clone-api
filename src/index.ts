@@ -6,6 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import { RegisterRoutes } from "../api-docs/routes";
 
 import { WELCOME_TO_MORIA } from "common/mensagens";
+import { PORT } from "common/constantes";
 
 import { docsHandler } from "middleware/docs";
 import { errorHandler, logErrors } from "middleware/error";
@@ -24,5 +25,4 @@ RegisterRoutes(app);
 
 app.use(logErrors);
 app.use(errorHandler);
-
-app.listen(process.env.PORT, () => console.log(WELCOME_TO_MORIA));
+app.listen(PORT, () => console.log(WELCOME_TO_MORIA));

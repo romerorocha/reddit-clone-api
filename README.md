@@ -42,7 +42,7 @@ Documentação da API disponível em `http://localhost:5000/api-docs`.
 
 Para consumir a API, se faz necessário a definição de um *Header* `Authorization` nos *requests*, contendo a senha informada no arquivo `.env`. O intuito é simular uma autenticação real.
 
-Preencha a seguinte chave, no `.env` do projeto, com o valor que desejar usar para exigir autenticação:
+Crie um arquivo `.env` na raiz do projeto, contendo a chave abaixo associada com o valor que desejar usar para exigir autenticação:
 
 ```text
 AUTH_KEY=

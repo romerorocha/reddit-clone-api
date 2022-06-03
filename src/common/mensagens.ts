@@ -1,6 +1,8 @@
+import { PORT, SERVER_URL } from "./constantes";
+
 export const WELCOME_TO_MORIA = `
 The Doors of Durin, Lord of Moria. 
-Speak "Authorization Header" and enter. --> ${process.env.SERVER_URL}:${process.env.PORT}
+Speak "Authorization Header" and enter. --> ${SERVER_URL}:${PORT}
 `;
 
 export const ERRO_CATEGORIA_JA_EXISTE =
