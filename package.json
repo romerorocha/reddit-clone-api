@@ -1,11 +1,11 @@
 {
-  "name": "forum-api-client",
+  "name": "reddit-clone-api",
   "version": "1.0.0",
   "license": "MIT",
   "author": "Claudio Romero",
   "main": "build/src/index.js",
   "engines": {
-    "node": "14.x",
+    "node": "16.x",
     "yarn": "1.x"
   },
   "scripts": {
@@ -24,7 +24,8 @@
     "@types/cors": "^2.8.12",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^28.1.0",
+    "@types/multer": "^1.4.7",
     "@types/node": "^17.0.39",
     "@types/swagger-ui-express": "^4.1.3",
     "@types/uuid": "^8.3.4",
@@ -32,10 +33,11 @@
     "@typescript-eslint/parser": "^5.27.0",
     "concurrently": "^7.2.1",
     "eslint": "^8.17.0",
-    "jest": "^27.5.1",
+    "jest": "^28.1.0",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^2.0.16",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.1.4",
+    "ts-jest": "^28.0.4",
     "ts-mockito": "^2.6.1",
     "ts-node": "^10.8.1",
     "tsconfig-paths": "^4.0.0",
@@ -47,7 +49,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "swagger-ui-express": "^4.4.0",
-    "tsoa": "^3.14.1",
-    "uuid": "^8.2.0"
+    "tsoa": "^4.1.0",
+    "uuid": "^8.3.2"
   }
 }
