@@ -17,7 +17,7 @@
     "prebuild": "rimraf build/* && rimraf api-docs/*",
     "build": "tsoa spec-and-routes && tsc",
     "start": "NODE_PATH=build/src node build/src/index.js",
-    "start:production": "NODE_ENV=production node build/src/index.js"
+    "start:production": "NODE_ENV=production NODE_PATH=build/src node build/src/index.js"
   },
   "devDependencies": {
     "@types/clone": "^2.1.1",
