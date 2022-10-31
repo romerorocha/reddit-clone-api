@@ -5,7 +5,7 @@
   "author": "Claudio Romero",
   "main": "build/src/index.js",
   "engines": {
-    "node": "16.x",
+    "node": "18.x",
     "yarn": "1.x"
   },
   "scripts": {
