@@ -48,7 +48,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "swagger-ui-express": "^4.6.0",
+    "swagger-ui-express": "^4.6.2",
     "tsoa": "^5.1.1",
     "uuid": "^9.0.0"
   }
