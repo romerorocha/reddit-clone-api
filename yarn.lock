@@ -1011,10 +1011,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/clone@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@types/clone/-/clone-2.1.1.tgz#9b880d0ce9b1f209b5e0bd6d9caa38209db34024"
-  integrity sha512-BZIU34bSYye0j/BFcPraiDZ5ka6MJADjcDVELGf7glr9K+iE8NYVjFslJFVWzskSxkLLyCrSPScE82/UUoBSvg==
+"@types/clone@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/clone/-/clone-2.1.2.tgz#94ad2e8909eb214e0eebac3b350a5c88118dc76d"
+  integrity sha512-fKXTsQvII/8K7xSxQF2OEuN6Pt4/PDasws60s/qeqoIOaBX7Aoevy5CmaQ4fANbvOo04MN3kx3xUIc6ZNXsmaQ==
 
 "@types/connect@*":
   version "3.4.34"
