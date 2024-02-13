@@ -6,7 +6,7 @@ API de aplicação de fórum, estilo Reddit, utilizada para apoiar o ensino de d
 
 ## Instalação e Execução
 
-Aplicação desenvolvida com **NodeJS v20.x.x**
+Aplicação desenvolvida com **Node.js v20.x.x**
 
 Para instalar as dependências do projeto
 

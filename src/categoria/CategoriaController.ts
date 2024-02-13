@@ -9,29 +9,29 @@ import {
   Security,
   SuccessResponse,
   Tags,
-} from "tsoa";
+} from 'tsoa'
 
-import { CategoriaService, Categoria } from ".";
+import { CategoriaService, Categoria } from '.'
 
-@Route("categorias")
-@Tags("Categorias")
-@Security("bearerAuth")
+@Route('categorias')
+@Tags('Categorias')
+@Security('bearerAuth')
 export class CategoriaController extends Controller {
   @Get()
   public listar(): Categoria[] {
-    return new CategoriaService().listar();
+    return new CategoriaService().listar()
   }
 
-  @SuccessResponse("201", "Created")
+  @SuccessResponse('201', 'Created')
   @Post()
   public criar(@Body() requestBody: Categoria): Categoria {
-    this.setStatus(201);
-    return new CategoriaService().criar(requestBody);
+    this.setStatus(201)
+    return new CategoriaService().criar(requestBody)
   }
 
-  @SuccessResponse("200", "Ok")
-  @Delete("{id}")
+  @SuccessResponse('200', 'Ok')
+  @Delete('{id}')
   public excluir(@Path() id: string): string {
-    return new CategoriaService().excluir(id);
+    return new CategoriaService().excluir(id)
   }
 }

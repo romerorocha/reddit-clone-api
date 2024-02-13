@@ -1,14 +1,14 @@
-import { ErroCampoObrigatorio } from "./erros";
+import { ErroCampoObrigatorio } from './erros'
 
 export const validarCamposObrigatorios = (campos: any) => {
-  const nomes = [];
+  const nomes = []
   for (const key in campos) {
     if (!!!campos[key]) {
-      nomes.push("'" + key + "'");
+      nomes.push("'" + key + "'")
     }
   }
 
   if (nomes.length) {
-    throw new ErroCampoObrigatorio(nomes);
+    throw new ErroCampoObrigatorio(nomes)
   }
-};
+}
