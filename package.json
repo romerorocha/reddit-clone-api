@@ -5,8 +5,7 @@
   "author": "Claudio Romero",
   "main": "build/src/index.js",
   "engines": {
-    "node": "18.x",
-    "yarn": "1.x"
+    "node": "20.x"
   },
   "scripts": {
     "clean": "rimraf build/* && rimraf api-docs/*",

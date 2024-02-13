@@ -4,30 +4,30 @@ API de aplicação de fórum, estilo Reddit, utilizada para apoiar o ensino de d
 
 ## Instalação e Execução
 
-Aplicação desenvolvida com **NodeJS v14.x.x** e **Yarn 1.22.x**
+Aplicação desenvolvida com **NodeJS v20.x.x**
 
 Para instalar as dependências do projeto
 
 ```sh
-yarn install
+npm install
 ```
 
 Para compilar e executar a aplicação
 
 ```sh
-yarn build && yarn start
+npm run build && npm run start
 ```
 
 Para executar a aplicação no modo "desenvolvedor"
 
 ```sh
-yarn dev
+npm run dev
 ```
 
 Para executar a aplicação em ambiente produtivo:
 
 ```sh
-yarn build && yarn start:production
+npm run build && npm run start:production
 ```
 
 O servidor é executado na porta `5000`, se disponível.
