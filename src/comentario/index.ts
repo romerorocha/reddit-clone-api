@@ -1,19 +1,19 @@
-export { ComentarioRepository } from "./ComentarioRepository";
-export { ComentarioService } from "./ComentarioService";
+export { ComentarioRepository } from './ComentarioRepository'
+export { ComentarioService } from './ComentarioService'
 
 export type Comentario = {
-  id?: string;
-  idPai: string;
-  timestamp: number;
-  corpo: string;
-  autor: string;
-  nota: number;
-};
+  id?: string
+  idPai: string
+  timestamp: number
+  corpo: string
+  autor: string
+  nota: number
+}
 
 export type ComentariosType = {
   [key: string]: {
-    [key: string]: Comentario;
-  };
-};
+    [key: string]: Comentario
+  }
+}
 
-export type ComentarioParams = Pick<Comentario, "autor" | "corpo">;
+export type ComentarioParams = Pick<Comentario, 'autor' | 'corpo'>

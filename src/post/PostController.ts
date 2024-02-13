@@ -11,57 +11,50 @@ import {
   Security,
   SuccessResponse,
   Tags,
-} from "tsoa";
+} from 'tsoa'
 
-import { PostParams, PostService, PostsPage, UserPost } from ".";
-import { Voto } from "common/types";
+import { PostParams, PostService, PostsPage, UserPost } from '.'
+import { Voto } from 'common/types'
 
-@Route("posts")
-@Tags("Posts")
-@Security("bearerAuth")
+@Route('posts')
+@Tags('Posts')
+@Security('bearerAuth')
 export class PostController extends Controller {
   @Get()
-  public listar(
-    @Query() pagina = 0,
-    @Query() tamanho = 5,
-    @Query() categoria?: string
-  ): PostsPage {
-    return new PostService().listarPaginado(pagina, tamanho, categoria);
+  public listar(@Query() pagina = 0, @Query() tamanho = 5, @Query() categoria?: string): PostsPage {
+    return new PostService().listarPaginado(pagina, tamanho, categoria)
   }
 
-  @SuccessResponse("201", "Created")
+  @SuccessResponse('201', 'Created')
   @Post()
   public criar(@Body() requestBody: PostParams): UserPost {
-    this.setStatus(201);
-    return new PostService().criar(requestBody);
+    this.setStatus(201)
+    return new PostService().criar(requestBody)
   }
 
-  @Get("{idPost}")
+  @Get('{idPost}')
   public obterPorId(@Path() idPost: string): UserPost {
-    this.setStatus(200);
-    return new PostService().obterPorId(idPost);
+    this.setStatus(200)
+    return new PostService().obterPorId(idPost)
   }
 
-  @SuccessResponse("200", "Ok")
-  @Put("{idPost}")
-  public atualizar(
-    @Path() idPost: string,
-    @Body() requestBody: PostParams
-  ): UserPost {
-    this.setStatus(200);
-    return new PostService().atualizar(idPost, requestBody);
+  @SuccessResponse('200', 'Ok')
+  @Put('{idPost}')
+  public atualizar(@Path() idPost: string, @Body() requestBody: PostParams): UserPost {
+    this.setStatus(200)
+    return new PostService().atualizar(idPost, requestBody)
   }
 
-  @SuccessResponse("200", "Ok")
-  @Put("{idPost}/votar")
+  @SuccessResponse('200', 'Ok')
+  @Put('{idPost}/votar')
   public votar(@Path() idPost: string, @Body() requestBody: Voto): UserPost {
-    this.setStatus(200);
-    return new PostService().votar(idPost, requestBody);
+    this.setStatus(200)
+    return new PostService().votar(idPost, requestBody)
   }
 
-  @SuccessResponse("200", "Ok")
-  @Delete("{idPost}")
+  @SuccessResponse('200', 'Ok')
+  @Delete('{idPost}')
   public excluir(@Path() idPost: string): string {
-    return new PostService().excluir(idPost);
+    return new PostService().excluir(idPost)
   }
 }

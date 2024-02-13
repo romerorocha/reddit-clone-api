@@ -1,6 +1,6 @@
 {
   "name": "reddit-clone-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Claudio Romero",
   "main": "build/src/index.js",

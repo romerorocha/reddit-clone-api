@@ -1,8 +1,8 @@
 export enum OpcaoVoto {
-  positivo = "positivo",
-  negativo = "negativo",
+  positivo = 'positivo',
+  negativo = 'negativo',
 }
 
 export type Voto = {
-  opcao: OpcaoVoto.positivo | OpcaoVoto.negativo;
-};
+  opcao: OpcaoVoto.positivo | OpcaoVoto.negativo
+}
