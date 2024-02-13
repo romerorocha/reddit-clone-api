@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "incremental": true,
-    "target": "es6",
+    "target": "es2021",
     "module": "commonjs",
     "outDir": "build",
     "resolveJsonModule": true,
