@@ -1,5 +1,7 @@
 # Forum API Server
 
+[![ci](https://github.com/romerorocha/reddit-clone-api/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/romerorocha/reddit-clone-api/actions/workflows/ci.yml)
+
 API de aplicação de fórum, estilo Reddit, utilizada para apoiar o ensino de desenvolvimento web com ReactJS
 
 ## Instalação e Execução
