@@ -47,7 +47,7 @@
     "clone": "^2.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "swagger-ui-express": "^5.0.1",
     "tsoa": "^6.5.1",
     "uuid": "^11.0.3"
