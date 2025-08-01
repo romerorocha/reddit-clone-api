@@ -40,7 +40,7 @@
     "ts-mockito": "^2.6.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "@types/joi": "^17.2.3",
