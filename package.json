@@ -46,7 +46,7 @@
     "@types/joi": "^17.2.3",
     "clone": "^2.1.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
+    "dotenv": "^17.2.3",
     "express": "^4.21.1",
     "swagger-ui-express": "^5.0.1",
     "tsoa": "^6.6.0",
