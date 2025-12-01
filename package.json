@@ -22,7 +22,7 @@
     "@types/clone": "^2.1.4",
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.3",
-    "@types/express": "^4.17.21",
+    "@types/express": "^5.0.5",
     "@types/jest": "^30.0.0",
     "@types/multer": "^1.4.12",
     "@types/node": "^24.9.2",
@@ -47,7 +47,7 @@
     "clone": "^2.1.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^4.21.1",
+    "express": "^5.2.0",
     "swagger-ui-express": "^5.0.1",
     "tsoa": "^6.6.0",
     "uuid": "^11.1.0"
