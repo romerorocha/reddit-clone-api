@@ -34,7 +34,7 @@
     "eslint": "^9.39.0",
     "jest": "^30.2.0",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.9",
+    "nodemon": "^3.1.11",
     "rimraf": "^6.1.0",
     "ts-jest": "^29.4.5",
     "ts-mockito": "^2.6.1",
