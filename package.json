@@ -29,7 +29,7 @@
     "@types/swagger-ui-express": "^4.1.8",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
-    "@typescript-eslint/parser": "^8.45.0",
+    "@typescript-eslint/parser": "^8.54.0",
     "concurrently": "^9.2.1",
     "eslint": "^9.39.0",
     "jest": "^30.2.0",
